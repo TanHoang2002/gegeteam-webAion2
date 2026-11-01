@@ -1283,9 +1283,8 @@ function App() {
                         <div className="bgsc-top">
                           <span className="bgsc-gs-badge">GS 1,400+</span>
                           <h5>Gói Khởi Đầu Cơ Bản</h5>
-                          <div className="bgsc-price">
-                            1.300k
-                            <small className="bgsc-subnote">/ trọn gói</small>
+                          <div className="bgsc-price contact">
+                            <span>💬 Inbox Admin</span>
                           </div>
                         </div>
                         <ul className="bgsc-specs">
@@ -1296,7 +1295,7 @@ function App() {
                           <li>✓ Đạt chuẩn Gear Score 1,400+</li>
                         </ul>
                         <a
-                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%201400%20(1300k)%20AION%202"
+                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%201400%20AION%202"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bgsc-action-btn"
@@ -1310,9 +1309,8 @@ function App() {
                         <div className="bgsc-top">
                           <span className="bgsc-gs-badge blue">GS 1,800+</span>
                           <h5>Gói Chiến Binh Phó Bản</h5>
-                          <div className="bgsc-price">
-                            2.600k
-                            <small className="bgsc-subnote">/ trọn gói</small>
+                          <div className="bgsc-price contact">
+                            <span>💬 Inbox Admin</span>
                           </div>
                         </div>
                         <ul className="bgsc-specs">
@@ -1323,7 +1321,7 @@ function App() {
                           <li>✓ Đạt chuẩn Gear Score 1,800+</li>
                         </ul>
                         <a
-                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%201800%20(2600k)%20AION%202"
+                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%201800%20AION%202"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bgsc-action-btn"
@@ -1338,9 +1336,8 @@ function App() {
                           <span className="bgsc-gs-badge orange">GS 2,100+</span>
                           <span className="bgsc-hot-tag">🔥 ĐƯỢC CHỌN NHIỀU</span>
                           <h5>Gói Chinh Phạt Cao Cấp</h5>
-                          <div className="bgsc-price orange">
-                            4.500k
-                            <small className="bgsc-subnote">/ trọn gói</small>
+                          <div className="bgsc-price contact">
+                            <span>💬 Inbox Admin</span>
                           </div>
                         </div>
                         <ul className="bgsc-specs">
@@ -1352,7 +1349,7 @@ function App() {
                           <li>✓ Đủ điều kiện đi các Dungeon Conquest</li>
                         </ul>
                         <a
-                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%202100%20(4500k)%20AION%202"
+                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%202100%20AION%202"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bgsc-action-btn orange"
@@ -1367,9 +1364,8 @@ function App() {
                           <span className="bgsc-gs-badge purple">GS 2,500+</span>
                           <span className="bgsc-hot-tag purple">👑 VIP ENDGAME</span>
                           <h5>Gói Thần Tốc Thượng Phẩm</h5>
-                          <div className="bgsc-price purple">
-                            9.500k
-                            <small className="bgsc-subnote">/ trọn gói</small>
+                          <div className="bgsc-price contact">
+                            <span>💬 Inbox Admin</span>
                           </div>
                         </div>
                         <ul className="bgsc-specs">
@@ -1381,7 +1377,7 @@ function App() {
                           <li>✓ Đủ điều kiện đi Dungeon Siêu Việt (Transcendence)</li>
                         </ul>
                         <a
-                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%202500%20(9500k)%20AION%202"
+                          href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%20GeGe%20Team%2C%20m%C3%ACnh%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20b%C3%A1o%20gi%C3%A1%20g%C3%B3i%20Leveling%201-45%20%2B%20GS%202500%20AION%202"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bgsc-action-btn purple"

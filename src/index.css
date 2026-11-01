@@ -1847,6 +1847,20 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 .bgsc-price.purple {
   color: #c084fc;
 }
+.bgsc-price.contact {
+  font-size: 15px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  padding: 6px 14px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.01em;
+}
 .bgsc-subnote {
   font-size: 12px;
   font-family: 'Plus Jakarta Sans', sans-serif;
