@@ -2451,14 +2451,18 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 .support-section::before {
   content: '';
   position: absolute;
-  inset: -14px;
+  top: -14px;
+  left: -14px;
+  right: -14px;
+  height: max(100% + 28px, 1050px);
   background-image: url('/services-bg.jpg');
   background-size: cover;
-  background-position: center 32%;
+  background-position: center top;
   background-repeat: no-repeat;
   filter: blur(1.5px) brightness(0.68) saturate(1.15);
   z-index: 0;
   pointer-events: none;
+  transform: translateZ(0);
 }
 
 .support-section::after {

@@ -247,7 +247,7 @@ function App() {
   const [activeRegion, setActiveRegion] = useState('ASIA');
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [consignModalOpen, setConsignModalOpen] = useState(false);
-  const [boosterCategory, setBoosterCategory] = useState<BoosterCategoryType>('dungeon');
+  const [boosterCategory, setBoosterCategory] = useState<BoosterCategoryType>('leveling');
   const [copied, setCopied] = useState(false);
   const [viewMode, setViewMode] = useState<'excel' | 'cards'>(() => {
     if (typeof window !== 'undefined' && window.innerWidth <= 768) {
@@ -1008,14 +1008,6 @@ function App() {
               </h2>
               <p>Phó bản Xã Nhựa • Cày Pet & Nhiệm Vụ • Leveling 1-45 • Chăm sóc nhân vật theo yêu cầu</p>
             </div>
-            <a
-              href="https://zalo.me/0936854505"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hub-link-badge"
-            >
-              💬 Tư Vấn Zalo 24/7 <ArrowRight size={15} />
-            </a>
           </div>
 
           <BoosterSection
