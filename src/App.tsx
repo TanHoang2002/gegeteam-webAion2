@@ -396,7 +396,7 @@ function App() {
       clearTimeout(tId);
       window.removeEventListener('resize', updateActiveIndicator);
     };
-  }, [activeNav, language]);
+  }, [activeNav, lang]);
 
   const handleNavHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.currentTarget;
