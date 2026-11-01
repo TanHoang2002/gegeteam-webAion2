@@ -1640,6 +1640,22 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
   box-shadow: 0 0 15px rgba(255, 157, 74, 0.25);
 }
 
+/* Booster Page Wrapper */
+.booster-page-wrap {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(11, 16, 26, 0.98));
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  margin-top: 14px;
+}
+@media (max-width: 768px) {
+  .booster-page-wrap {
+    padding: 16px 10px;
+    border-radius: 12px;
+  }
+}
+
 /* Booster Category Pills Navigation */
 .booster-cat-tabs {
   display: flex;
