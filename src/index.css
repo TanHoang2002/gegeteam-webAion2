@@ -1642,6 +1642,8 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 
 /* Booster Page Wrapper */
 .booster-page-wrap {
+  width: 100%;
+  box-sizing: border-box;
   background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(11, 16, 26, 0.98));
   border: 1px solid #1e293b;
   border-radius: 16px;
@@ -2419,13 +2421,13 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 .support-section {
   position: relative;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 12px;
   border: 1.5px solid rgba(168, 85, 247, 0.4) !important;
-  padding: 55px 45px !important;
+  padding: 40px 32px !important;
   margin: 50px auto !important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 35px rgba(168, 85, 247, 0.18) !important;
 }
 
