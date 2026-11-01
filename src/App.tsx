@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
   Calculator,
@@ -370,6 +370,57 @@ function App() {
     localStorage.removeItem('gegeteam_auth_user');
   };
 
+  // Nav indicator state (thanh ngang phát sáng di chuyển chân theo chuột)
+  const [activeNav, setActiveNav] = useState('home');
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateActiveIndicator = () => {
+      if (!navRef.current) return;
+      const targetEl =
+        navRef.current.querySelector<HTMLAnchorElement>(`a[data-nav="${activeNav}"]`) ||
+        navRef.current.querySelector<HTMLAnchorElement>('a.active') ||
+        navRef.current.querySelector<HTMLAnchorElement>('a');
+      if (targetEl) {
+        setIndicatorStyle({
+          left: targetEl.offsetLeft,
+          width: targetEl.offsetWidth,
+          opacity: 1,
+        });
+      }
+    };
+    const tId = setTimeout(updateActiveIndicator, 60);
+    window.addEventListener('resize', updateActiveIndicator);
+    return () => {
+      clearTimeout(tId);
+      window.removeEventListener('resize', updateActiveIndicator);
+    };
+  }, [activeNav, language]);
+
+  const handleNavHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.currentTarget;
+    setIndicatorStyle({
+      left: target.offsetLeft,
+      width: target.offsetWidth,
+      opacity: 1,
+    });
+  };
+
+  const handleNavLeave = () => {
+    if (!navRef.current) return;
+    const targetEl =
+      navRef.current.querySelector<HTMLAnchorElement>(`a[data-nav="${activeNav}"]`) ||
+      navRef.current.querySelector<HTMLAnchorElement>('a');
+    if (targetEl) {
+      setIndicatorStyle({
+        left: targetEl.offsetLeft,
+        width: targetEl.offsetWidth,
+        opacity: 1,
+      });
+    }
+  };
+
   // Calculator states
   const [calcServerKey, setCalcServerKey] = useState('ASIA|Siel|13.9');
   const [calcAmount, setCalcAmount] = useState<number | string>(0);
@@ -422,14 +473,31 @@ function App() {
             <small>TEAM</small>
           </span>
         </a>
-        <nav className={`main-nav ${mobileMenu ? 'is-open' : ''}`}>
-          <a className="active" href="#sec-landing" onClick={() => setMobileMenu(false)}>
+        <nav
+          ref={navRef}
+          className={`main-nav ${mobileMenu ? 'is-open' : ''}`}
+          onMouseLeave={handleNavLeave}
+        >
+          <a
+            data-nav="home"
+            className={activeNav === 'home' ? 'active' : ''}
+            href="#sec-landing"
+            onMouseEnter={handleNavHover}
+            onClick={() => {
+              setActiveNav('home');
+              setMobileMenu(false);
+            }}
+          >
             {t.nav.home}
           </a>
           <a
+            data-nav="pricing"
+            className={activeNav === 'pricing' ? 'active' : ''}
             href="#pricing"
+            onMouseEnter={handleNavHover}
             onClick={(e) => {
               e.preventDefault();
+              setActiveNav('pricing');
               setMobileMenu(false);
               document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -437,9 +505,13 @@ function App() {
             {t.nav.pricing}
           </a>
           <a
+            data-nav="boost"
+            className={activeNav === 'boost' ? 'active' : ''}
             href="#boost"
+            onMouseEnter={handleNavHover}
             onClick={(e) => {
               e.preventDefault();
+              setActiveNav('boost');
               setMobileMenu(false);
               document.getElementById('boost')?.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -447,13 +519,29 @@ function App() {
             {t.nav.consign}
           </a>
           <a
+            data-nav="support"
+            className={activeNav === 'support' ? 'active' : ''}
             href="https://zalo.me/0936854505"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMobileMenu(false)}
+            onMouseEnter={handleNavHover}
+            onClick={() => {
+              setActiveNav('support');
+              setMobileMenu(false);
+            }}
           >
             {t.nav.support}
           </a>
+
+          {/* Thanh ngang phát sáng di chuyển trượt theo con chuột */}
+          <span
+            className="nav-gliding-glow-bar"
+            style={{
+              left: `${indicatorStyle.left}px`,
+              width: `${indicatorStyle.width}px`,
+              opacity: indicatorStyle.opacity,
+            }}
+          />
           {authUser ? (
             <div className="mobile-auth-bar">
               <span>👤 <b>{authUser.username}</b></span>

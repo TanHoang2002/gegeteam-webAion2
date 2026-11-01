@@ -19,10 +19,45 @@ a { color: inherit; text-decoration: none; }
 .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; color: #f4a45d; background: linear-gradient(145deg,#2c1615,#1e3041); border: 1px solid #9f6335; border-radius: 10px; box-shadow: 0 0 18px rgba(224,115,41,.18); }
 .brand strong { display: block; font-size: 15px; letter-spacing: .2em; color: #f4f1eb; }
 .brand small { display: block; color: #d18e56; font-size: 9px; letter-spacing: .35em; margin-top: 1px; }
-.main-nav { display: flex; gap: 34px; align-items: center; color: #8d96aa; font-size: 13px; }
-.main-nav a { position: relative; padding: 30px 0; transition: color .2s; }
-.main-nav a:hover, .main-nav a.active { color: #f4f1eb; }
-.main-nav a.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: #f19a4c; box-shadow: 0 0 12px #f19a4c; }
+.main-nav {
+  position: relative;
+  display: flex;
+  gap: 34px;
+  align-items: center;
+  color: #8d96aa;
+  font-size: 13px;
+}
+.main-nav a {
+  position: relative;
+  padding: 30px 0;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+}
+.main-nav a.active::after {
+  display: none !important;
+}
+/* Thanh ngang phát sáng di chuyển trượt theo con chuột */
+.nav-gliding-glow-bar {
+  position: absolute;
+  bottom: -1px;
+  height: 3px;
+  background: #38bdf8;
+  border-radius: 2px;
+  box-shadow: 0 0 14px #38bdf8, 0 0 6px #38bdf8, 0 0 24px rgba(56, 189, 248, 0.8);
+  pointer-events: none;
+  transition: left 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+              width 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.2s ease;
+}
 .header-actions { display: flex; gap: 12px; align-items: center; }
 .icon-button, .menu-toggle { background: transparent; border: 0; color: #aeb7c9; cursor: pointer; display: grid; place-items: center; }
 .outline-button { border: 1px solid #344055; background: rgba(255,255,255,.02); color: #dce2ed; border-radius: 7px; padding: 9px 17px; cursor: pointer; font-size: 12px; transition: .2s; }
@@ -156,26 +191,35 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 }
 .excel-green-table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   text-align: center;
+}
+.excel-green-table th,
+.excel-green-table td {
+  width: 105px;
+  min-width: 105px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .excel-green-table th {
   background: linear-gradient(180deg, #11263c 0%, #091726 100%);
   color: #93c5fd;
   font-weight: 800;
-  font-size: 12.5px;
-  padding: 9px 12px;
-  white-space: nowrap;
+  font-size: 11.5px;
+  padding: 10px 4px;
   border: 1px solid rgba(56, 189, 248, 0.18);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 .excel-green-table td {
   background: rgba(8, 19, 32, 0.95);
   color: #f8fafc;
   font-family: 'JetBrains Mono', 'Courier New', monospace;
-  padding: 10px 12px;
-  white-space: nowrap;
+  padding: 10px 4px;
   border: 1px solid rgba(56, 189, 248, 0.18);
   transition: all 0.18s ease;
 }
@@ -1174,19 +1218,26 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 }
 
 .excel-green-table th.th-highlighted {
-  background: #ea580c !important;
+  background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 0 14px rgba(234, 88, 12, 0.6) !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 16px rgba(234, 88, 12, 0.7) !important;
 }
 
 .excel-green-table td.cell-highlighted {
-  background: #ffedd5 !important;
-  color: #c2410c !important;
-  box-shadow: 0 0 16px rgba(249, 115, 22, 0.75), inset 0 0 10px rgba(249, 115, 22, 0.3) !important;
-  border: 2px solid #ea580c !important;
-  font-size: 15.5px !important;
-  font-weight: 900 !important;
+  background: rgba(234, 88, 12, 0.32) !important;
+  border: 2px solid #f97316 !important;
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.65), inset 0 0 12px rgba(249, 115, 22, 0.4) !important;
+  position: relative;
+  z-index: 2;
   animation: cell-pulse 1.4s ease-in-out infinite alternate !important;
+}
+
+.excel-green-table td.cell-highlighted .rate-num-val {
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 18px #ea580c !important;
 }
 @keyframes cell-pulse {
   from { transform: scale(1); }

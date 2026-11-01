@@ -11,8 +11,8 @@ export const TRANSLATIONS = {
     },
     hero: {
       eyebrow: 'GEGETEAM - NHÀ CÁO',
-      title1: 'ĐAM MÊ ĐỦ LỚN.',
-      title2: 'ANH EM ĐỦ CHẤT.',
+      title1: 'KHỞI NGUỒN ĐAM MÊ –',
+      title2: 'KẾT NỐI CHẤT RIÊNG.',
       desc: 'Nơi hội tụ những chiến binh AION Việt Nam. Giao dịch an tâm, hỗ trợ tận tâm, trải nghiệm xứng tầm.',
       cta: 'Khám phá bảng giá',
       trust: 'game thủ đang tin dùng',
