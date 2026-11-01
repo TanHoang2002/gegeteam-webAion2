@@ -2859,3 +2859,421 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
   transform: scale(1.15);
   color: #f3aa69;
 }
+
+/* ==========================================================================
+   GIÁ XÃ NHỰA DUNGEON (CONQUEST & TRANSCENDENCE) - 2 COLUMNS GAMING STYLE
+   ========================================================================== */
+.dungeon-two-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+.dungeon-col {
+  background: linear-gradient(180deg, rgba(13, 22, 38, 0.95), rgba(7, 12, 22, 0.98));
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.dungeon-col:nth-child(2) {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.08);
+}
+.dcol-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: linear-gradient(90deg, rgba(14, 116, 144, 0.35), rgba(15, 23, 42, 0.2));
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+.dcol-header.trans {
+  background: linear-gradient(90deg, rgba(126, 34, 206, 0.35), rgba(249, 115, 22, 0.15));
+  border-bottom-color: rgba(168, 85, 247, 0.25);
+}
+.dcol-icon {
+  font-size: 18px;
+}
+.dcol-header h5 {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+}
+.dcol-header.trans h5 {
+  color: #f3e8ff;
+}
+.dcol-list {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dcol-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.dcol-item:hover {
+  background: rgba(56, 189, 248, 0.07);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateX(3px);
+}
+.dcol-item.trans-item:hover {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+.dcol-item.highlight-row {
+  border-color: rgba(249, 115, 22, 0.3);
+  background: rgba(249, 115, 22, 0.04);
+}
+.dcol-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dcol-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dcol-dot.conquest {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+.dcol-dot.trans {
+  background: #f97316;
+  box-shadow: 0 0 8px #f97316;
+}
+.dcol-name {
+  font-size: 13.5px;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+}
+.dcol-sub-badge {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.dcol-sub-badge.orange {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+}
+.dcol-sub-badge.purple {
+  background: rgba(168, 85, 247, 0.2);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+.dcol-item-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.dcol-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 800;
+  color: #38bdf8;
+}
+.dcol-price.orange {
+  color: #fb923c;
+}
+.dcol-price.purple {
+  color: #c084fc;
+}
+.dcol-price small {
+  font-size: 11px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #64748b;
+  font-weight: 500;
+}
+.dcol-btn {
+  padding: 5px 12px;
+  border-radius: 5px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #7dd3fc !important;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.dcol-btn:hover {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.5);
+}
+.dcol-btn.orange {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.45);
+  color: #fed7aa !important;
+}
+.dcol-btn.orange:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(234, 88, 12, 0.5);
+}
+.dcol-btn.purple {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #e9d5ff !important;
+}
+.dcol-btn.purple:hover {
+  background: #9333ea;
+  border-color: #9333ea;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(147, 51, 234, 0.5);
+}
+
+/* ==========================================================================
+   BẢNG GIÁ FARM PET & NHIỆM VỤ CHI TIẾT (PET SERVICE TABLE)
+   ========================================================================== */
+.pet-table-container {
+  background: linear-gradient(180deg, rgba(13, 22, 38, 0.95), rgba(7, 12, 22, 0.98));
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  margin-top: 14px;
+}
+.pet-service-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 600px;
+}
+.pet-service-table thead {
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1.5px solid rgba(34, 197, 94, 0.35);
+}
+.pet-service-table th {
+  padding: 13px 16px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #86efac;
+}
+.pet-service-table th.th-stt { width: 50px; text-align: center; }
+.pet-service-table th.th-name { width: 38%; }
+.pet-service-table th.th-time { width: 18%; }
+.pet-service-table th.th-price { width: 22%; }
+.pet-service-table th.th-action { width: 18%; text-align: right; }
+
+.pet-service-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+.pet-service-table tbody tr:hover {
+  background: rgba(34, 197, 94, 0.05);
+}
+.pet-service-table td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+.td-stt {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 700;
+}
+.td-name b {
+  display: block;
+  font-size: 13.5px;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+}
+.td-name small {
+  display: block;
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+.name-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pbadge {
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pbadge.gold {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.pbadge.blue {
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+.pbadge.green {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+.pbadge.purple {
+  background: rgba(168, 85, 247, 0.2);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+.pbadge.cyan {
+  background: rgba(6, 182, 212, 0.2);
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+}
+
+.td-time {
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+.time-pill {
+  display: inline-block;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  color: #cbd5e1;
+}
+
+.td-price .val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #38bdf8;
+}
+.td-price small {
+  font-size: 11px;
+  color: #64748b;
+  margin-left: 4px;
+}
+.td-price.gold .val {
+  color: #fbbf24;
+  font-size: 17px;
+}
+.td-price.orange .val {
+  color: #fb923c;
+  font-size: 16.5px;
+}
+.td-price.green .val {
+  color: #4ade80;
+  font-size: 17px;
+}
+.td-price.purple .val {
+  color: #c084fc;
+  font-size: 17px;
+}
+
+.td-action {
+  text-align: right;
+}
+.pet-table-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 5px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #86efac !important;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.pet-table-btn:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(22, 163, 74, 0.5);
+}
+.pet-table-btn.gold {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: #f59e0b;
+  color: #fde68a !important;
+}
+.pet-table-btn.gold:hover {
+  background: #d97706;
+  border-color: #d97706;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(217, 119, 6, 0.5);
+}
+.pet-table-btn.orange {
+  background: rgba(249, 115, 22, 0.18);
+  border-color: #f97316;
+  color: #fed7aa !important;
+}
+.pet-table-btn.orange:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+  color: #ffffff !important;
+}
+.pet-table-btn.green {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  color: #bbf7d0 !important;
+}
+.pet-table-btn.green:hover {
+  background: #15803d;
+  border-color: #15803d;
+  color: #ffffff !important;
+}
+.pet-table-btn.purple {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #a855f7;
+  color: #f3e8ff !important;
+}
+.pet-table-btn.purple:hover {
+  background: #7e22ce;
+  border-color: #7e22ce;
+  color: #ffffff !important;
+}
+
+/* Highlighted Rows in Pet Table */
+.tr-highlight-vip {
+  background: rgba(245, 158, 11, 0.05);
+}
+.tr-highlight-vip:hover {
+  background: rgba(245, 158, 11, 0.1) !important;
+}
+.tr-highlight-save {
+  background: rgba(249, 115, 22, 0.04);
+}
+.tr-highlight-save:hover {
+  background: rgba(249, 115, 22, 0.09) !important;
+}
+.tr-pet-lv3 {
+  background: rgba(168, 85, 247, 0.03);
+}
+.tr-pet-lv3:hover {
+  background: rgba(168, 85, 247, 0.08) !important;
+}
+

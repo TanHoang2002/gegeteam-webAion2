@@ -22,24 +22,24 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </button>
         <button
           type="button"
-          className={`bct-btn ${boosterCategory === 'leveling' ? 'active' : ''}`}
-          onClick={() => setBoosterCategory('leveling')}
-        >
-          ⚡ Combo 1-45 (GS)
-        </button>
-        <button
-          type="button"
           className={`bct-btn ${boosterCategory === 'dungeon' ? 'active' : ''}`}
           onClick={() => setBoosterCategory('dungeon')}
         >
-          ⚔️ Phó Bản & Siêu Việt
+          ⚔️ Xã Nhựa Dungeon
         </button>
         <button
           type="button"
           className={`bct-btn ${boosterCategory === 'pet' ? 'active' : ''}`}
           onClick={() => setBoosterCategory('pet')}
         >
-          🐾 Farm & Level Pet
+          🐾 Bảng Giá Pet & Q
+        </button>
+        <button
+          type="button"
+          className={`bct-btn ${boosterCategory === 'leveling' ? 'active' : ''}`}
+          onClick={() => setBoosterCategory('leveling')}
+        >
+          ⚡ Combo 1-45 (GS)
         </button>
         <button
           type="button"
@@ -50,7 +50,472 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </button>
       </div>
 
-      {/* 2. MỤC 2: COMBO CÀY CẤP 1-45 (THEO GEAR SCORE) */}
+      {/* 2. MỤC: GIÁ XÃ NHỰA DUNGEON (PHÓ BẢN & SIÊU VIỆT) */}
+      {(boosterCategory === 'all' || boosterCategory === 'dungeon') && (
+        <div className="booster-group-section">
+          <div className="bgs-header">
+            <span className="bgs-badge-tag cyan">⚔️ DUNGEON & TRANSCENDENCE</span>
+            <h4>GIÁ XÃ NHỰA DUNGEON</h4>
+            <p className="bgs-desc">Kéo phó bản Chinh Phạt (Conquest) & Siêu Việt (Transcendence) nhanh gọn, uy tín</p>
+          </div>
+
+          <div className="dungeon-two-cols">
+            {/* CỘT 1: CONQUEST */}
+            <div className="dungeon-col">
+              <div className="dcol-header conquest">
+                <span className="dcol-icon">⚔️</span>
+                <h5>PHÓ BẢN CONQUEST</h5>
+              </div>
+              <div className="dcol-list">
+                {/* Conquest 1 ⭐ */}
+                <div className="dcol-item">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot conquest" />
+                    <b className="dcol-name">Conquest 1 ⭐</b>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price">12k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Conquest%201%20sao%20(12k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Conquest 1 ⭐ Hard */}
+                <div className="dcol-item highlight-row">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot conquest" />
+                    <div>
+                      <b className="dcol-name">Conquest 1 ⭐ Hard</b>
+                      <span className="dcol-sub-badge orange">Độ Khó Cao</span>
+                    </div>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price orange">20k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Conquest%201%20sao%20Hard%20(20k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn orange"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Conquest 2 ⭐ */}
+                <div className="dcol-item">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot conquest" />
+                    <b className="dcol-name">Conquest 2 ⭐</b>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price">13k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Conquest%202%20sao%20(13k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Conquest 2 ⭐ Hard */}
+                <div className="dcol-item highlight-row">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot conquest" />
+                    <div>
+                      <b className="dcol-name">Conquest 2 ⭐ Hard</b>
+                      <span className="dcol-sub-badge orange">Độ Khó Cao</span>
+                    </div>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price orange">25k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Conquest%202%20sao%20Hard%20(25k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn orange"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Conquest 3 ⭐ */}
+                <div className="dcol-item">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot conquest" />
+                    <b className="dcol-name">Conquest 3 ⭐</b>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price">15k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Conquest%203%20sao%20(15k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CỘT 2: TRANSCENDENCE */}
+            <div className="dungeon-col">
+              <div className="dcol-header trans">
+                <span className="dcol-icon">🔥</span>
+                <h5>PHÓ BẢN SIÊU VIỆT (TRANSCENDENCE)</h5>
+              </div>
+              <div className="dcol-list">
+                {/* Transcendence 1 ⭐ */}
+                <div className="dcol-item trans-item">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot trans" />
+                    <b className="dcol-name">Transcendence 1 ⭐</b>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price purple">20k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Transcendence%201%20sao%20(20k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn purple"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Transcendence 2 ⭐ */}
+                <div className="dcol-item trans-item">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot trans" />
+                    <b className="dcol-name">Transcendence 2 ⭐</b>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price purple">20k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Transcendence%202%20sao%20(20k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn purple"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Transcendence 3 ⭐ */}
+                <div className="dcol-item trans-item highlight-row">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot trans" />
+                    <div>
+                      <b className="dcol-name">Transcendence 3 ⭐</b>
+                      <span className="dcol-sub-badge purple">Cao Cấp</span>
+                    </div>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price purple">25k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Transcendence%203%20sao%20(25k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn purple"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Transcendence 4 ⭐ */}
+                <div className="dcol-item trans-item highlight-row">
+                  <div className="dcol-item-left">
+                    <span className="dcol-dot trans" />
+                    <div>
+                      <b className="dcol-name">Transcendence 4 ⭐</b>
+                      <span className="dcol-sub-badge purple">Endgame</span>
+                    </div>
+                  </div>
+                  <div className="dcol-item-right">
+                    <span className="dcol-price purple">25k <small>/ turn</small></span>
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Transcendence%204%20sao%20(25k%2Fturn)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="dcol-btn purple"
+                    >
+                      Đặt Run →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 3. MỤC: BẢNG GIÁ FARM PET & NHIỆM VỤ CHI TIẾT */}
+      {(boosterCategory === 'all' || boosterCategory === 'pet') && (
+        <div className="booster-group-section">
+          <div className="bgs-header">
+            <span className="bgs-badge-tag green">🐾 LEVELING & FARM PET</span>
+            <h4>BẢNG GIÁ FARM PET & NHIỆM VỤ</h4>
+            <p className="bgs-desc">Cày cấp thú cưng, farm quái, nhặt lông Abyss & nhiệm vụ Daily chuẩn xác</p>
+          </div>
+
+          <div className="pet-table-container">
+            <table className="pet-service-table">
+              <thead>
+                <tr>
+                  <th className="th-stt">STT</th>
+                  <th className="th-name">TÊN DỊCH VỤ</th>
+                  <th className="th-time">THỜI GIAN</th>
+                  <th className="th-price">ĐƠN GIÁ</th>
+                  <th className="th-action">THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* 1. Farm pet /h */}
+                <tr>
+                  <td className="td-stt">1</td>
+                  <td className="td-name">
+                    <b>FARM PET /H</b>
+                    <small>Cày exp Pet theo giờ, farm bãi chuẩn</small>
+                  </td>
+                  <td className="td-time">—</td>
+                  <td className="td-price">
+                    <span className="val">60.000 đ</span>
+                    <small>/ giờ</small>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20thu%C3%AA%20Farm%20Pet%20%2F%20H%20(60.000%C4%91)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn"
+                    >
+                      Đặt Dịch Vụ →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 2. Nhặt lông vàng / đỏ (map chính) */}
+                <tr>
+                  <td className="td-stt">2</td>
+                  <td className="td-name">
+                    <b>NHẶT LÔNG VÀNG / ĐỎ (MAP CHÍNH)</b>
+                    <small>Thu thập lông vàng & lông đỏ trên bản đồ chính</small>
+                  </td>
+                  <td className="td-time">1 - 2h</td>
+                  <td className="td-price">
+                    <span className="val">70.000 đ</span>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20thu%C3%AA%20Nh%E1%BA%B7t%20L%C3%B4ng%20V%C3%A0ng%20%2F%20%C4%90%E1%BB%8F%20Map%20Ch%C3%ADnh%20(70.000%C4%91)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn"
+                    >
+                      Đặt Dịch Vụ →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 3. Nhặt lông Abyss */}
+                <tr>
+                  <td className="td-stt">3</td>
+                  <td className="td-name">
+                    <b>NHẶT LÔNG ABYSS</b>
+                    <small>Thu gom lông chiến trường Abyss an toàn, nhanh gọn</small>
+                  </td>
+                  <td className="td-time">1 - 2h</td>
+                  <td className="td-price">
+                    <span className="val">80.000 đ</span>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20thu%C3%AA%20Nh%E1%BA%B7t%20L%C3%B4ng%20Abyss%20(80.000%C4%91)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn"
+                    >
+                      Đặt Dịch Vụ →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 4. Làm nhiệm vụ: Q Daily, Abyss /h */}
+                <tr>
+                  <td className="td-stt">4</td>
+                  <td className="td-name">
+                    <b>LÀM NHIỆM VỤ: Q DAILY, ABYSS /H</b>
+                    <small>Chạy full chuỗi nhiệm vụ hằng ngày và Q chiến trường Abyss</small>
+                  </td>
+                  <td className="td-time">1.5 - 2h</td>
+                  <td className="td-price">
+                    <span className="val">60.000 đ</span>
+                    <small>/ giờ</small>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20thu%C3%AA%20L%C3%A0m%20Nhi%E1%BB%87m%20V%E1%BB%A5%20Q%20Daily%2C%20Abyss%20%2F%20H%20(60.000%C4%91)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn"
+                    >
+                      Đặt Dịch Vụ →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 5. Full service (1+2+3+4) */}
+                <tr className="tr-highlight-vip">
+                  <td className="td-stt">5</td>
+                  <td className="td-name">
+                    <div className="name-badge-row">
+                      <b>Full service (1+2+3+4)</b>
+                      <span className="pbadge gold">👑 COMBO ALL-IN-ONE</span>
+                    </div>
+                    <small>Trọn gói Farm Pet + Lông Map chính + Lông Abyss + Q Daily Abyss</small>
+                  </td>
+                  <td className="td-time"><span className="time-pill">10 - 24h</span></td>
+                  <td className="td-price gold">
+                    <span className="val">850.000 đ</span>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20g%C3%B3i%20Full%20Service%20(1%2B2%2B3%2B4)%20850.000%C4%91"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn gold"
+                    >
+                      Đặt Gói 850k →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 6. Full 1 phe (xanh/tím) (1+2+4) */}
+                <tr className="tr-highlight-save">
+                  <td className="td-stt">6</td>
+                  <td className="td-name">
+                    <div className="name-badge-row">
+                      <b>Full 1 phe (xanh/tím) (1+2+4)</b>
+                      <span className="pbadge blue">TIẾT KIỆM</span>
+                    </div>
+                    <small>Gói chuyên biệt cho 1 phe: Farm Pet + Lông Map + Q Daily</small>
+                  </td>
+                  <td className="td-time"><span className="time-pill">8 - 24h</span></td>
+                  <td className="td-price orange">
+                    <span className="val">650.000 đ</span>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20g%C3%B3i%20Full%201%20phe%20(xanh%2Ft%C3%ADm)%20650.000%C4%91"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn orange"
+                    >
+                      Đặt Gói 650k →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 7. Farm pet lv.3 (phe xanh) */}
+                <tr className="tr-pet-lv3">
+                  <td className="td-stt">7</td>
+                  <td className="td-name">
+                    <div className="name-badge-row">
+                      <b>Farm pet lv.3 (phe xanh)</b>
+                      <span className="pbadge green">🐾 LEVEL 3 MAX</span>
+                    </div>
+                    <small>Cày thú cưng lên Level 3 hoàn chỉnh (Phe Xanh)</small>
+                  </td>
+                  <td className="td-time"><span className="time-pill">32h++</span></td>
+                  <td className="td-price green">
+                    <span className="val">2.200.000 đ</span>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20Farm%20Pet%20Lv.3%20Phe%20Xanh%20(2.200.000%C4%91)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn green"
+                    >
+                      Đặt Cày Lv.3 →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 8. Farm pet lv.3 (phe tím) */}
+                <tr className="tr-pet-lv3">
+                  <td className="td-stt">8</td>
+                  <td className="td-name">
+                    <div className="name-badge-row">
+                      <b>Farm pet lv.3 (phe tím)</b>
+                      <span className="pbadge purple">🐾 LEVEL 3 MAX</span>
+                    </div>
+                    <small>Cày thú cưng lên Level 3 hoàn chỉnh (Phe Tím)</small>
+                  </td>
+                  <td className="td-time"><span className="time-pill">35h++</span></td>
+                  <td className="td-price purple">
+                    <span className="val">2.000.000 đ</span>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20Farm%20Pet%20Lv.3%20Phe%20T%C3%ADm%20(2.000.000%C4%91)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn purple"
+                    >
+                      Đặt Cày Lv.3 →
+                    </a>
+                  </td>
+                </tr>
+
+                {/* 9. Mở hòm Hidden Cube /1key */}
+                <tr>
+                  <td className="td-stt">9</td>
+                  <td className="td-name">
+                    <div className="name-badge-row">
+                      <b>Mở hòm Hidden Cube / 1 key</b>
+                      <span className="pbadge cyan">🗝️ HIDDEN CUBE</span>
+                    </div>
+                    <small>Dịch vụ mở rương Hidden Cube theo chìa khóa</small>
+                  </td>
+                  <td className="td-time">5 - 7p / key</td>
+                  <td className="td-price">
+                    <span className="val">15.000 đ</span>
+                    <small>/ key</small>
+                  </td>
+                  <td className="td-action">
+                    <a
+                      href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20thu%C3%AA%20M%E1%BB%9F%20h%C3%B2m%20Hidden%20Cube%20(15.000%C4%91%2Fkey)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pet-table-btn"
+                    >
+                      Đặt Mở Hòm →
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* 4. MỤC: COMBO CÀY CẤP 1-45 (THEO GEAR SCORE) */}
       {(boosterCategory === 'all' || boosterCategory === 'leveling') && (
         <div className="booster-group-section">
           <div className="bgs-header">
@@ -178,226 +643,7 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </div>
       )}
 
-      {/* 3. MỤC 3: PHÓ BẢN CHINH PHẠT (CONQUEST) & SIÊU VIỆT (TRANSCENDENCE) */}
-      {(boosterCategory === 'all' || boosterCategory === 'dungeon') && (
-        <div className="booster-group-section">
-          <div className="bgs-header">
-            <span className="bgs-badge-tag cyan">⚔️ KÉO PHÓ BẢN (RUN DUNGEON)</span>
-            <h4>Phó Bản Chinh Phạt (Conquest) & Siêu Việt (Transcendence)</h4>
-            <p className="bgs-desc">Kéo slot phó bản nhanh gọn, nhận đồ Tím/Vàng, an toàn tuyệt đối</p>
-          </div>
-
-          <div className="booster-dungeon-grid">
-            {/* Conquest items */}
-            <div className="bd-row">
-              <div className="bd-info">
-                <span className="bd-tag conquest">✴️ CONQUEST</span>
-                <b className="bd-title">Urugugu Canyon</b>
-                <span className="bd-req">Yêu cầu GS: <b>1,400+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price">25k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Urugugu%20Canyon%20(25k)"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-
-            <div className="bd-row">
-              <div className="bd-info">
-                <span className="bd-tag conquest">✴️ CONQUEST</span>
-                <b className="bd-title">Vakron Sky Island</b>
-                <span className="bd-req">Yêu cầu GS: <b>1,400+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price">25k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Vakron%20Sky%20Island%20(25k)"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-
-            <div className="bd-row">
-              <div className="bd-info">
-                <span className="bd-tag conquest">✴️ CONQUEST</span>
-                <b className="bd-title">Ferocious Horn Den (Normal)</b>
-                <span className="bd-req">Yêu cầu GS: <b>2,100+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price">25k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Ferocious%20Horn%20Den%2025k"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-
-            <div className="bd-row">
-              <div className="bd-info">
-                <span className="bd-tag conquest">✴️ CONQUEST</span>
-                <b className="bd-title">Ferocious Horn Den (Hard)</b>
-                <span className="bd-req">Yêu cầu GS: <b>2,100+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price orange">60k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Ferocious%20Horn%20Den%2060k"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-
-            <div className="bd-row">
-              <div className="bd-info">
-                <span className="bd-tag conquest">✴️ CONQUEST</span>
-                <b className="bd-title">Fire Temple</b>
-                <span className="bd-req">Yêu cầu GS: <b>2,100+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price orange">60k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Fire%20Temple%20(60k)"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-
-            {/* Transcendence items */}
-            <div className="bd-row trans-row">
-              <div className="bd-info">
-                <span className="bd-tag trans">✴️ TRANSCENDENCE</span>
-                <b className="bd-title">Deus Research Base (Stage 3)</b>
-                <span className="bd-req">Yêu cầu GS: <b>2,100+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price purple">70k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Deus%20Research%20Base%20Stage%203%20(70k)"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn purple"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-
-            <div className="bd-row trans-row">
-              <div className="bd-info">
-                <span className="bd-tag trans">✴️ TRANSCENDENCE</span>
-                <b className="bd-title">Shattered Arkanis (Stage 4)</b>
-                <span className="bd-req">Yêu cầu GS: <b>2,500+</b></span>
-              </div>
-              <div className="bd-action-box">
-                <span className="bd-price purple">100k <small>/ run</small></span>
-                <a
-                  href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20run%20Shattered%20Arkanis%20Stage%204%20(100k)"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bd-btn purple"
-                >
-                  Đặt Slot →
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 4. MỤC 1: LEVELING & FARM PET */}
-      {(boosterCategory === 'all' || boosterCategory === 'pet') && (
-        <div className="booster-group-section">
-          <div className="bgs-header">
-            <span className="bgs-badge-tag green">🐾 LEVELING & FARM PET</span>
-            <h4>Nâng Cấp Pet & Farm Giờ</h4>
-            <p className="bgs-desc">Cày cấp thú cưng, farm quái nhặt nguyên liệu và trang bị Pet</p>
-          </div>
-
-          <div className="booster-pet-grid">
-            <div className="bpet-card">
-              <div className="bpet-header">
-                <span className="bpet-icon">🐾</span>
-                <div>
-                  <h5>Pet Level 0 - 3</h5>
-                  <small>Nâng cấp Pet sơ cấp nhanh chóng</small>
-                </div>
-              </div>
-              <div className="bpet-price">40k</div>
-              <a
-                href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20c%C3%A0y%20Pet%20level%200-3%20(40k)"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bpet-btn"
-              >
-                Đặt Cày Pet →
-              </a>
-            </div>
-
-            <div className="bpet-card">
-              <div className="bpet-header">
-                <span className="bpet-icon">⏳</span>
-                <div>
-                  <h5>1 Giờ Farm Pet</h5>
-                  <small>Farm quái nhặt đồ, tích lũy exp Pet</small>
-                </div>
-              </div>
-              <div className="bpet-price">80k <small>/ giờ</small></div>
-              <a
-                href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20thu%C3%AA%201%20hour%20farm%20Pet%20(80k)"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bpet-btn"
-              >
-                Thuê Farm 1 Giờ →
-              </a>
-            </div>
-
-            <div className="bpet-card highlight">
-              <div className="bpet-save-badge">🔥 TIẾT KIỆM 50K</div>
-              <div className="bpet-header">
-                <span className="bpet-icon">🎁</span>
-                <div>
-                  <h5>Bundle 5 Giờ Farm Pet</h5>
-                  <small>Gói farm liên tục tối ưu chi phí</small>
-                </div>
-              </div>
-              <div className="bpet-price orange">350k <small className="strike">400k</small></div>
-              <a
-                href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20Bundle%205%20hours%20farm%20Pet%20(350k)"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bpet-btn orange"
-              >
-                Đặt Bundle 350k →
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 5. MỤC 4: DỊCH VỤ THEO YÊU CẦU (CUSTOM SERVICE) */}
+      {/* 5. MỤC: DỊCH VỤ THEO YÊU CẦU (CUSTOM SERVICE) */}
       {(boosterCategory === 'all' || boosterCategory === 'custom') && (
         <div className="booster-group-section">
           <div className="bgs-header">
