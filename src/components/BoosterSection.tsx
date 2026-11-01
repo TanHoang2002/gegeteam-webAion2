@@ -284,10 +284,13 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                 <tr>
                   <td className="td-stt">1</td>
                   <td className="td-name">
-                    <b>FARM PET /H</b>
+                    <div className="name-badge-row">
+                      <b>FARM PET /H</b>
+                      <span className="pbadge blue">🐾 THEO GIỜ</span>
+                    </div>
                     <small>Cày exp Pet theo giờ, farm bãi chuẩn</small>
                   </td>
-                  <td className="td-time">—</td>
+                  <td className="td-time"><span className="time-pill">—</span></td>
                   <td className="td-price">
                     <span className="val">60.000 đ</span>
                     <small>/ giờ</small>
@@ -308,10 +311,13 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                 <tr>
                   <td className="td-stt">2</td>
                   <td className="td-name">
-                    <b>NHẶT LÔNG VÀNG / ĐỎ (MAP CHÍNH)</b>
+                    <div className="name-badge-row">
+                      <b>NHẶT LÔNG VÀNG / ĐỎ (MAP CHÍNH)</b>
+                      <span className="pbadge blue">🌾 MAP CHÍNH</span>
+                    </div>
                     <small>Thu thập lông vàng & lông đỏ trên bản đồ chính</small>
                   </td>
-                  <td className="td-time">1 - 2h</td>
+                  <td className="td-time"><span className="time-pill">1 - 2h</span></td>
                   <td className="td-price">
                     <span className="val">70.000 đ</span>
                   </td>
@@ -331,10 +337,13 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                 <tr>
                   <td className="td-stt">3</td>
                   <td className="td-name">
-                    <b>NHẶT LÔNG ABYSS</b>
+                    <div className="name-badge-row">
+                      <b>NHẶT LÔNG ABYSS</b>
+                      <span className="pbadge blue">⚔️ ABYSS</span>
+                    </div>
                     <small>Thu gom lông chiến trường Abyss an toàn, nhanh gọn</small>
                   </td>
-                  <td className="td-time">1 - 2h</td>
+                  <td className="td-time"><span className="time-pill">1 - 2h</span></td>
                   <td className="td-price">
                     <span className="val">80.000 đ</span>
                   </td>
@@ -354,10 +363,13 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                 <tr>
                   <td className="td-stt">4</td>
                   <td className="td-name">
-                    <b>LÀM NHIỆM VỤ: Q DAILY, ABYSS /H</b>
+                    <div className="name-badge-row">
+                      <b>LÀM NHIỆM VỤ: Q DAILY, ABYSS /H</b>
+                      <span className="pbadge blue">📜 Q DAILY</span>
+                    </div>
                     <small>Chạy full chuỗi nhiệm vụ hằng ngày và Q chiến trường Abyss</small>
                   </td>
-                  <td className="td-time">1.5 - 2h</td>
+                  <td className="td-time"><span className="time-pill">1.5 - 2h</span></td>
                   <td className="td-price">
                     <span className="val">60.000 đ</span>
                     <small>/ giờ</small>
@@ -384,9 +396,9 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                     </div>
                     <small>Trọn gói Farm Pet + Lông Map chính + Lông Abyss + Q Daily Abyss</small>
                   </td>
-                  <td className="td-time"><span className="time-pill">10 - 24h</span></td>
-                  <td className="td-price gold">
-                    <span className="val">850.000 đ</span>
+                  <td className="td-time"><span className="time-pill pill-gold">10 - 24h</span></td>
+                  <td className="td-price">
+                    <span className="val val-gold">850.000 đ</span>
                   </td>
                   <td className="td-action">
                     <a
@@ -406,13 +418,13 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                   <td className="td-name">
                     <div className="name-badge-row">
                       <b>Full 1 phe (xanh/tím) (1+2+4)</b>
-                      <span className="pbadge blue">TIẾT KIỆM</span>
+                      <span className="pbadge orange">⭐ TIẾT KIỆM</span>
                     </div>
                     <small>Gói chuyên biệt cho 1 phe: Farm Pet + Lông Map + Q Daily</small>
                   </td>
-                  <td className="td-time"><span className="time-pill">8 - 24h</span></td>
-                  <td className="td-price orange">
-                    <span className="val">650.000 đ</span>
+                  <td className="td-time"><span className="time-pill pill-orange">8 - 24h</span></td>
+                  <td className="td-price">
+                    <span className="val val-orange">650.000 đ</span>
                   </td>
                   <td className="td-action">
                     <a
@@ -427,25 +439,25 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                 </tr>
 
                 {/* 7. Farm pet lv.3 (phe xanh) */}
-                <tr className="tr-pet-lv3">
+                <tr>
                   <td className="td-stt">7</td>
                   <td className="td-name">
                     <div className="name-badge-row">
                       <b>Farm pet lv.3 (phe xanh)</b>
-                      <span className="pbadge green">🐾 LEVEL 3 MAX</span>
+                      <span className="pbadge green">🐾 LEVEL 3 (XANH)</span>
                     </div>
                     <small>Cày thú cưng lên Level 3 hoàn chỉnh (Phe Xanh)</small>
                   </td>
                   <td className="td-time"><span className="time-pill">32h++</span></td>
-                  <td className="td-price green">
-                    <span className="val">2.200.000 đ</span>
+                  <td className="td-price">
+                    <span className="val val-green">2.200.000 đ</span>
                   </td>
                   <td className="td-action">
                     <a
                       href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20Farm%20Pet%20Lv.3%20Phe%20Xanh%20(2.200.000%C4%91)"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="pet-table-btn green"
+                      className="pet-table-btn"
                     >
                       Đặt Cày Lv.3 →
                     </a>
@@ -453,25 +465,25 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                 </tr>
 
                 {/* 8. Farm pet lv.3 (phe tím) */}
-                <tr className="tr-pet-lv3">
+                <tr>
                   <td className="td-stt">8</td>
                   <td className="td-name">
                     <div className="name-badge-row">
                       <b>Farm pet lv.3 (phe tím)</b>
-                      <span className="pbadge purple">🐾 LEVEL 3 MAX</span>
+                      <span className="pbadge purple">🐾 LEVEL 3 (TÍM)</span>
                     </div>
                     <small>Cày thú cưng lên Level 3 hoàn chỉnh (Phe Tím)</small>
                   </td>
                   <td className="td-time"><span className="time-pill">35h++</span></td>
-                  <td className="td-price purple">
-                    <span className="val">2.000.000 đ</span>
+                  <td className="td-price">
+                    <span className="val val-purple">2.000.000 đ</span>
                   </td>
                   <td className="td-action">
                     <a
                       href="https://zalo.me/0936854505?text=Ch%C3%A0o%20Admin%2C%20m%C3%ACnh%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20Farm%20Pet%20Lv.3%20Phe%20T%C3%ADm%20(2.000.000%C4%91)"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="pet-table-btn purple"
+                      className="pet-table-btn"
                     >
                       Đặt Cày Lv.3 →
                     </a>
@@ -488,7 +500,7 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
                     </div>
                     <small>Dịch vụ mở rương Hidden Cube theo chìa khóa</small>
                   </td>
-                  <td className="td-time">5 - 7p / key</td>
+                  <td className="td-time"><span className="time-pill">5 - 7p / key</span></td>
                   <td className="td-price">
                     <span className="val">15.000 đ</span>
                     <small>/ key</small>
