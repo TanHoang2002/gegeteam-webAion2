@@ -1658,6 +1658,23 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
   }
 }
 
+/* Unified Booster Section */
+.unified-booster-section {
+  width: min(1200px, calc(100% - 32px)) !important;
+}
+.compact-tabs {
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+.fade-in {
+  animation: fadeInQuick 0.22s ease-out;
+}
+@keyframes fadeInQuick {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Booster Category Pills Navigation */
 .booster-cat-tabs {
   display: flex;

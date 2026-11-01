@@ -1,8 +1,10 @@
 import React from 'react';
 
+export type BoosterCategoryType = 'dungeon' | 'pet' | 'leveling' | 'custom';
+
 interface BoosterSectionProps {
-  boosterCategory: 'all' | 'leveling' | 'pet' | 'dungeon' | 'custom';
-  setBoosterCategory: (cat: 'all' | 'leveling' | 'pet' | 'dungeon' | 'custom') => void;
+  boosterCategory: BoosterCategoryType;
+  setBoosterCategory: (cat: BoosterCategoryType) => void;
 }
 
 export const BoosterSection: React.FC<BoosterSectionProps> = ({
@@ -10,16 +12,9 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
   setBoosterCategory,
 }) => {
   return (
-    <div className="modal-booster-body">
-      {/* 1. THANH ĐIỀU HƯỚNG / BỘ LỌC DANH MỤC NHANH */}
-      <div className="booster-cat-tabs">
-        <button
-          type="button"
-          className={`bct-btn ${boosterCategory === 'all' ? 'active' : ''}`}
-          onClick={() => setBoosterCategory('all')}
-        >
-          🔥 Tất Cả Dịch Vụ
-        </button>
+    <div className="modal-booster-body unified-body">
+      {/* 1. THANH CHUYỂN TAB GỌN GÀNG - CHỌN MỤC NÀO HIỆN MỤC ĐÓ */}
+      <div className="booster-cat-tabs compact-tabs">
         <button
           type="button"
           className={`bct-btn ${boosterCategory === 'dungeon' ? 'active' : ''}`}
@@ -39,7 +34,7 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
           className={`bct-btn ${boosterCategory === 'leveling' ? 'active' : ''}`}
           onClick={() => setBoosterCategory('leveling')}
         >
-          ⚡ Combo 1-45 (GS)
+          ⚡ Leveling 1-45 (GS)
         </button>
         <button
           type="button"
@@ -50,9 +45,9 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </button>
       </div>
 
-      {/* 2. MỤC: GIÁ XÃ NHỰA DUNGEON (PHÓ BẢN & SIÊU VIỆT) */}
-      {(boosterCategory === 'all' || boosterCategory === 'dungeon') && (
-        <div className="booster-group-section">
+      {/* 2. TAB 1: GIÁ XÃ NHỰA DUNGEON (PHÓ BẢN & SIÊU VIỆT) */}
+      {boosterCategory === 'dungeon' && (
+        <div className="booster-group-section fade-in">
           <div className="bgs-header">
             <span className="bgs-badge-tag cyan">⚔️ DUNGEON & TRANSCENDENCE</span>
             <h4>GIÁ XÃ NHỰA DUNGEON</h4>
@@ -264,9 +259,9 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </div>
       )}
 
-      {/* 3. MỤC: BẢNG GIÁ FARM PET & NHIỆM VỤ CHI TIẾT */}
-      {(boosterCategory === 'all' || boosterCategory === 'pet') && (
-        <div className="booster-group-section">
+      {/* 3. TAB 2: BẢNG GIÁ FARM PET & NHIỆM VỤ */}
+      {boosterCategory === 'pet' && (
+        <div className="booster-group-section fade-in">
           <div className="bgs-header">
             <span className="bgs-badge-tag green">🐾 LEVELING & FARM PET</span>
             <h4>BẢNG GIÁ FARM PET & NHIỆM VỤ</h4>
@@ -515,9 +510,9 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </div>
       )}
 
-      {/* 4. MỤC: COMBO CÀY CẤP 1-45 (THEO GEAR SCORE) */}
-      {(boosterCategory === 'all' || boosterCategory === 'leveling') && (
-        <div className="booster-group-section">
+      {/* 4. TAB 3: COMBO CÀY CẤP 1-45 (THEO GEAR SCORE) */}
+      {boosterCategory === 'leveling' && (
+        <div className="booster-group-section fade-in">
           <div className="bgs-header">
             <div className="bgs-title-wrap">
               <span className="bgs-badge-tag gold">⚡ GÓI LEVELING TRỌN GÓI</span>
@@ -643,9 +638,9 @@ export const BoosterSection: React.FC<BoosterSectionProps> = ({
         </div>
       )}
 
-      {/* 5. MỤC: DỊCH VỤ THEO YÊU CẦU (CUSTOM SERVICE) */}
-      {(boosterCategory === 'all' || boosterCategory === 'custom') && (
-        <div className="booster-group-section">
+      {/* 5. TAB 4: DỊCH VỤ THEO YÊU CẦU (CUSTOM SERVICE) */}
+      {boosterCategory === 'custom' && (
+        <div className="booster-group-section fade-in">
           <div className="bgs-header">
             <span className="bgs-badge-tag orange">🛠️ CUSTOM SERVICE</span>
             <h4>Dịch Vụ Theo Yêu Cầu</h4>

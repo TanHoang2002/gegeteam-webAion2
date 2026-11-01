@@ -16,7 +16,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { Language, TRANSLATIONS } from './translations';
-import { BoosterSection } from './components/BoosterSection';
+import { BoosterSection, BoosterCategoryType } from './components/BoosterSection';
 
 const heroImage = '/hero-fox.png';
 const USDT_RATE = 25800; // 1 USDT = 25,800 VNĐ
@@ -247,7 +247,7 @@ function App() {
   const [activeRegion, setActiveRegion] = useState('ASIA');
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [consignModalOpen, setConsignModalOpen] = useState(false);
-  const [boosterCategory, setBoosterCategory] = useState<'all' | 'leveling' | 'pet' | 'dungeon' | 'custom'>('all');
+  const [boosterCategory, setBoosterCategory] = useState<BoosterCategoryType>('dungeon');
   const [copied, setCopied] = useState(false);
   const [viewMode, setViewMode] = useState<'excel' | 'cards'>(() => {
     if (typeof window !== 'undefined' && window.innerWidth <= 768) {
@@ -999,14 +999,14 @@ function App() {
           </div>
         </section>
 
-        <section className="support-section" id="boost">
-          <div className="section-heading" style={{ marginBottom: '20px' }}>
+        <section className="support-section unified-booster-section" id="boost">
+          <div className="section-heading" style={{ marginBottom: '16px', width: '100%' }}>
             <div>
-              <div className="eyebrow eyebrow-orange">{t.services.eyebrow}</div>
+              <div className="eyebrow eyebrow-orange">DỊCH VỤ GEGETEAM - NHÀ CÁO</div>
               <h2>
-                {t.services.title1} <em>{t.services.title2}</em>
+                BẢNG GIÁ DỊCH VỤ <em>& CÀY THUÊ AION 2</em>
               </h2>
-              <p>Bảng giá cày cấp 1-45, kéo phó bản Conquest / Transcendence, farm Pet & dịch vụ theo yêu cầu.</p>
+              <p>Phó bản Xã Nhựa • Cày Pet & Nhiệm Vụ • Leveling 1-45 • Chăm sóc nhân vật theo yêu cầu</p>
             </div>
             <a
               href="https://zalo.me/0936854505"
@@ -1018,12 +1018,10 @@ function App() {
             </a>
           </div>
 
-          <div className="booster-page-wrap">
-            <BoosterSection
-              boosterCategory={boosterCategory}
-              setBoosterCategory={setBoosterCategory}
-            />
-          </div>
+          <BoosterSection
+            boosterCategory={boosterCategory}
+            setBoosterCategory={setBoosterCategory}
+          />
         </section>
 
         <section className="community-section" id="support">
