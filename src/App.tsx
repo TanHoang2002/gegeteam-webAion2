@@ -858,7 +858,7 @@ function App() {
                           {currentRegionData.row1.map((item) => (
                             <td
                               key={`r1-${item.server}`}
-                              className={`${item.rate === null ? 'cell-na' : 'cell-clickable'} ${search.trim() && item.server.toLowerCase().includes(search.toLowerCase()) ? 'cell-highlighted' : ''}`.trim()}
+                              className={`${item.rate === null ? 'cell-na' : 'cell-clickable'} ${search.trim() && item.server.toLowerCase().includes(search.toLowerCase()) ? 'cell-highlighted' : ''} ${selectedCalcServer.server === item.server && selectedCalcServer.region === currentRegionData.code ? 'cell-selected' : ''}`.trim()}
                               onClick={() => onSelectServerForCalc(currentRegionData.code, item.server, item.rate)}
                               title={item.rate !== null ? `🔥 Nhấp để ký gửi ngay server ${item.server} (Tỷ giá ${item.rate})` : 'Chưa có tỷ giá'}
                             >
@@ -881,7 +881,7 @@ function App() {
                           {currentRegionData.row2.map((item) => (
                             <td
                               key={`r2-${item.server}`}
-                              className={`${item.rate === null ? 'cell-na' : 'cell-clickable'} ${search.trim() && item.server.toLowerCase().includes(search.toLowerCase()) ? 'cell-highlighted' : ''}`.trim()}
+                              className={`${item.rate === null ? 'cell-na' : 'cell-clickable'} ${search.trim() && item.server.toLowerCase().includes(search.toLowerCase()) ? 'cell-highlighted' : ''} ${selectedCalcServer.server === item.server && selectedCalcServer.region === currentRegionData.code ? 'cell-selected' : ''}`.trim()}
                               onClick={() => onSelectServerForCalc(currentRegionData.code, item.server, item.rate)}
                               title={item.rate !== null ? `🔥 Nhấp để ký gửi ngay server ${item.server} (Tỷ giá ${item.rate})` : 'Chưa có tỷ giá'}
                             >
