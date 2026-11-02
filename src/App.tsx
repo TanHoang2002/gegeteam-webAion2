@@ -10,15 +10,15 @@ import {
   RefreshCw,
   Search,
   ShieldCheck,
-  UserRound,
   Wallet,
   X,
   Zap,
 } from 'lucide-react';
 import { Language, TRANSLATIONS } from './translations';
 import { BoosterSection, BoosterCategoryType } from './components/BoosterSection';
+import { AetherRing, FeatherField } from './components/AionDecor';
 
-const heroImage = '/hero-fox.png';
+const heroImage = '/hero-fox.webp';
 const USDT_RATE = 25800; // 1 USDT = 25,800 VNĐ
 
 interface ServerItem {
@@ -258,168 +258,28 @@ function App() {
   const [search, setSearch] = useState('');
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  // Simple Auth states (tùy chọn, không bắt buộc đăng nhập để dùng web)
-  const [authUser, setAuthUser] = useState<{ username: string; phone?: string } | null>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('gegeteam_auth_user');
-        if (saved) return JSON.parse(saved);
-      } catch {
-        // ignore
-      }
-    }
-    return null;
-  });
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-  const [authUsername, setAuthUsername] = useState('');
-  const [authPassword, setAuthPassword] = useState('');
-  const [authPhone, setAuthPhone] = useState('');
-  const [authError, setAuthError] = useState('');
-  const [authSuccess, setAuthSuccess] = useState('');
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    setAuthError('');
-    if (!authUsername.trim() || !authPassword.trim()) {
-      setAuthError('Vui lòng điền đầy đủ tài khoản và mật khẩu!');
-      return;
-    }
-    try {
-      const rawUsers = localStorage.getItem('gegeteam_users_db') || '{}';
-      const usersDb = JSON.parse(rawUsers);
-      const existing = usersDb[authUsername.trim().toLowerCase()];
-      if (existing) {
-        if (existing.password === authPassword) {
-          const loggedUser = { username: existing.username, phone: existing.phone };
-          setAuthUser(loggedUser);
-          localStorage.setItem('gegeteam_auth_user', JSON.stringify(loggedUser));
-          setAuthSuccess('Đăng nhập thành công!');
-          setTimeout(() => {
-            setAuthModalOpen(false);
-            setAuthSuccess('');
-          }, 600);
-          return;
-        } else {
-          setAuthError('Mật khẩu không chính xác!');
-          return;
-        }
-      } else {
-        const loggedUser = { username: authUsername.trim() };
-        usersDb[authUsername.trim().toLowerCase()] = { username: authUsername.trim(), password: authPassword };
-        localStorage.setItem('gegeteam_users_db', JSON.stringify(usersDb));
-        setAuthUser(loggedUser);
-        localStorage.setItem('gegeteam_auth_user', JSON.stringify(loggedUser));
-        setAuthSuccess('Đăng nhập thành công!');
-        setTimeout(() => {
-          setAuthModalOpen(false);
-          setAuthSuccess('');
-        }, 600);
-      }
-    } catch {
-      const loggedUser = { username: authUsername.trim() };
-      setAuthUser(loggedUser);
-      localStorage.setItem('gegeteam_auth_user', JSON.stringify(loggedUser));
-      setAuthModalOpen(false);
-    }
-  };
-
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    setAuthError('');
-    if (!authUsername.trim() || !authPassword.trim()) {
-      setAuthError('Vui lòng nhập tên tài khoản và mật khẩu!');
-      return;
-    }
-    if (authPassword.length < 4) {
-      setAuthError('Mật khẩu tối thiểu 4 ký tự!');
-      return;
-    }
-    try {
-      const rawUsers = localStorage.getItem('gegeteam_users_db') || '{}';
-      const usersDb = JSON.parse(rawUsers);
-      const key = authUsername.trim().toLowerCase();
-      if (usersDb[key]) {
-        setAuthError('Tên tài khoản này đã có người đăng ký, vui lòng chọn tên khác!');
-        return;
-      }
-      usersDb[key] = {
-        username: authUsername.trim(),
-        password: authPassword,
-        phone: authPhone.trim(),
-      };
-      localStorage.setItem('gegeteam_users_db', JSON.stringify(usersDb));
-      const loggedUser = { username: authUsername.trim(), phone: authPhone.trim() };
-      setAuthUser(loggedUser);
-      localStorage.setItem('gegeteam_auth_user', JSON.stringify(loggedUser));
-      setAuthSuccess('Đăng ký thành công! Chào mừng bạn gia nhập GeGe Team.');
-      setTimeout(() => {
-        setAuthModalOpen(false);
-        setAuthSuccess('');
-      }, 700);
-    } catch {
-      const loggedUser = { username: authUsername.trim(), phone: authPhone.trim() };
-      setAuthUser(loggedUser);
-      localStorage.setItem('gegeteam_auth_user', JSON.stringify(loggedUser));
-      setAuthModalOpen(false);
-    }
-  };
-
-  const handleLogout = () => {
-    setAuthUser(null);
-    localStorage.removeItem('gegeteam_auth_user');
-  };
-
-  // Nav indicator state (thanh ngang phát sáng di chuyển chân theo chuột)
+  // Thanh sáng dưới menu: đổi trực tiếp transform, không render lại cả trang khi rê chuột
   const [activeNav, setActiveNav] = useState('home');
-  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef<HTMLElement>(null);
+  const glowRef = useRef<HTMLSpanElement>(null);
+
+  const moveGlow = (el: HTMLElement | null | undefined) => {
+    if (!el || !glowRef.current) return;
+    glowRef.current.style.opacity = '1';
+    glowRef.current.style.transform = `translateX(${el.offsetLeft}px) scaleX(${el.offsetWidth / 100})`;
+  };
+  const activeNavLink = () => navRef.current?.querySelector<HTMLAnchorElement>(`a[data-nav="${activeNav}"]`);
 
   useEffect(() => {
-    const updateActiveIndicator = () => {
-      if (!navRef.current) return;
-      const targetEl =
-        navRef.current.querySelector<HTMLAnchorElement>(`a[data-nav="${activeNav}"]`) ||
-        navRef.current.querySelector<HTMLAnchorElement>('a.active') ||
-        navRef.current.querySelector<HTMLAnchorElement>('a');
-      if (targetEl) {
-        setIndicatorStyle({
-          left: targetEl.offsetLeft,
-          width: targetEl.offsetWidth,
-          opacity: 1,
-        });
-      }
-    };
-    const tId = setTimeout(updateActiveIndicator, 60);
-    window.addEventListener('resize', updateActiveIndicator);
-    return () => {
-      clearTimeout(tId);
-      window.removeEventListener('resize', updateActiveIndicator);
-    };
+    const update = () => moveGlow(navRef.current?.querySelector<HTMLAnchorElement>(`a[data-nav="${activeNav}"]`));
+    update();
+    document.fonts?.ready.then(update);
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
   }, [activeNav, lang]);
 
-  const handleNavHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const target = e.currentTarget;
-    setIndicatorStyle({
-      left: target.offsetLeft,
-      width: target.offsetWidth,
-      opacity: 1,
-    });
-  };
-
-  const handleNavLeave = () => {
-    if (!navRef.current) return;
-    const targetEl =
-      navRef.current.querySelector<HTMLAnchorElement>(`a[data-nav="${activeNav}"]`) ||
-      navRef.current.querySelector<HTMLAnchorElement>('a');
-    if (targetEl) {
-      setIndicatorStyle({
-        left: targetEl.offsetLeft,
-        width: targetEl.offsetWidth,
-        opacity: 1,
-      });
-    }
-  };
+  const handleNavHover = (e: React.MouseEvent<HTMLAnchorElement>) => moveGlow(e.currentTarget);
+  const handleNavLeave = () => moveGlow(activeNavLink());
 
   // Calculator states
   const [calcServerKey, setCalcServerKey] = useState('ASIA|Siel|13.9');
@@ -465,9 +325,10 @@ function App() {
     <div className="app-shell">
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
+      <FeatherField />
       <header className="site-header">
         <a className="brand" href="#sec-landing" aria-label="Gege Team trang chủ">
-          <img src="/gegeteam-logo.png" alt="GeGe Team Logo" className="brand-logo-img" />
+          <img src="/gegeteam-logo.webp" alt="GeGe Team Logo" className="brand-logo-img" />
           <span className="brand-text-wrap">
             <strong>GEGE</strong>
             <small>TEAM</small>
@@ -534,42 +395,7 @@ function App() {
           </a>
 
           {/* Thanh ngang phát sáng di chuyển trượt theo con chuột */}
-          <span
-            className="nav-gliding-glow-bar"
-            style={{
-              left: `${indicatorStyle.left}px`,
-              width: `${indicatorStyle.width}px`,
-              opacity: indicatorStyle.opacity,
-            }}
-          />
-          {authUser ? (
-            <div className="mobile-auth-bar">
-              <span>👤 <b>{authUser.username}</b></span>
-              <button
-                type="button"
-                className="mobile-logout-btn"
-                onClick={() => {
-                  handleLogout();
-                  setMobileMenu(false);
-                }}
-              >
-                Đăng xuất
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="mobile-login-btn"
-              onClick={() => {
-                setMobileMenu(false);
-                setAuthError('');
-                setAuthSuccess('');
-                setAuthModalOpen(true);
-              }}
-            >
-              <UserRound size={16} /> {t.nav.login}
-            </button>
-          )}
+          <span ref={glowRef} className="nav-gliding-glow-bar" />
         </nav>
         <div className="header-actions">
           {/* Language Switcher */}
@@ -581,34 +407,6 @@ function App() {
           >
             <span>{lang === 'vi' ? '🇻🇳 VN' : '🇬🇧 EN'}</span>
           </button>
-          {authUser ? (
-            <div className="auth-user-badge">
-              <span className="aub-name">
-                <UserRound size={14} /> <b>{authUser.username}</b>
-              </span>
-              <button
-                type="button"
-                className="aub-logout-btn"
-                onClick={handleLogout}
-                title="Đăng xuất"
-              >
-                Đăng xuất
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="outline-button header-login"
-              onClick={() => {
-                setAuthError('');
-                setAuthSuccess('');
-                setAuthModalOpen(true);
-              }}
-            >
-              <UserRound size={15} />
-              <span>{t.nav.login}</span>
-            </button>
-          )}
           <button
             className="menu-toggle"
             aria-label="Mở menu"
@@ -655,7 +453,8 @@ function App() {
           </div>
           <div className="hero-art-wrap">
             <div className="hero-glow" />
-            <img className="hero-art" src={heroImage} alt="Chiến binh trong thế giới fantasy" />
+            <AetherRing />
+            <img className="hero-art" src={heroImage} width="420" height="420" alt="Chiến binh trong thế giới fantasy" />
           </div>
         </section>
 
@@ -1245,12 +1044,12 @@ function App() {
               className="comm-channel-card comm-card-portal"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/gegeteam-logo.png" alt="GeGe Team" className="ccc-full-logo ccc-full-logo-gege" />
+                <img src="/gegeteam-logo.webp" alt="GeGe Team" className="ccc-full-logo ccc-full-logo-gege" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap bio-bg">
-                  <img src="/gegeteam-logo.png" alt="GeGe Portal" className="ccc-badge-logo" />
+                  <img src="/gegeteam-logo.webp" alt="GeGe Portal" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.portal}</b>
@@ -1289,104 +1088,6 @@ function App() {
           </div>
         )}
 
-        {/* MODAL ĐĂNG NHẬP / ĐĂNG KÝ TÙY CHỌN (KHÔNG BẮT BUỘC ĐỂ DÙNG WEB) */}
-        {authModalOpen && (
-          <div className="modal-overlay" onClick={() => setAuthModalOpen(false)}>
-            <div className="auth-modal-card" onClick={(e) => e.stopPropagation()}>
-              <div className="auth-modal-header">
-                <div className="auth-modal-title">
-                  <span className="auth-pill-tag">THÀNH VIÊN GEGE TEAM</span>
-                  <h3>{authMode === 'login' ? 'Đăng Nhập Tài Khoản' : 'Đăng Ký Tài Khoản'}</h3>
-                  <p className="auth-modal-sub">
-                    {authMode === 'login'
-                      ? 'Đăng nhập tiện lợi (hoàn toàn không bắt buộc để xem web)'
-                      : 'Tạo tài khoản nhanh chóng chỉ trong 10 giây'}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  className="modal-close-btn"
-                  onClick={() => setAuthModalOpen(false)}
-                  aria-label="Đóng"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="auth-tabs">
-                <button
-                  type="button"
-                  className={`auth-tab-btn ${authMode === 'login' ? 'active' : ''}`}
-                  onClick={() => {
-                    setAuthMode('login');
-                    setAuthError('');
-                    setAuthSuccess('');
-                  }}
-                >
-                  Đăng Nhập
-                </button>
-                <button
-                  type="button"
-                  className={`auth-tab-btn ${authMode === 'register' ? 'active' : ''}`}
-                  onClick={() => {
-                    setAuthMode('register');
-                    setAuthError('');
-                    setAuthSuccess('');
-                  }}
-                >
-                  Đăng Ký Mới
-                </button>
-              </div>
-
-              <form className="auth-form" onSubmit={authMode === 'login' ? handleLogin : handleRegister}>
-                {authError && <div className="auth-alert error">{authError}</div>}
-                {authSuccess && <div className="auth-alert success">{authSuccess}</div>}
-
-                <div className="auth-field">
-                  <label>Tên tài khoản / Nickname</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="VD: NightStalker"
-                    value={authUsername}
-                    onChange={(e) => setAuthUsername(e.target.value)}
-                  />
-                </div>
-
-                {authMode === 'register' && (
-                  <div className="auth-field">
-                    <label>Số điện thoại hoặc Zalo (tùy chọn)</label>
-                    <input
-                      type="text"
-                      placeholder="VD: 0912345678"
-                      value={authPhone}
-                      onChange={(e) => setAuthPhone(e.target.value)}
-                    />
-                  </div>
-                )}
-
-                <div className="auth-field">
-                  <label>Mật khẩu</label>
-                  <input
-                    type="password"
-                    required
-                    placeholder="Nhập mật khẩu của bạn"
-                    value={authPassword}
-                    onChange={(e) => setAuthPassword(e.target.value)}
-                  />
-                </div>
-
-                <button type="submit" className="auth-submit-btn">
-                  {authMode === 'login' ? 'Đăng Nhập Ngay →' : 'Tạo Tài Khoản →'}
-                </button>
-
-                <div className="auth-note-guest">
-                  💡 <i>Bạn hoàn toàn có thể tự do xem tỷ giá, tính tiền và đặt dịch vụ mà <b>không cần đăng nhập</b>.</i>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
       </main>
 
       <footer className="site-footer">

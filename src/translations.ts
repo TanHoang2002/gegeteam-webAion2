@@ -7,7 +7,6 @@ export const TRANSLATIONS = {
       pricing: 'Bảng giá Kina',
       consign: 'Ký gửi & Booster',
       support: 'Hỗ trợ (Zalo)',
-      login: 'Đăng nhập',
     },
     hero: {
       eyebrow: 'GEGETEAM - NHÀ CÁO',
@@ -139,7 +138,6 @@ export const TRANSLATIONS = {
       pricing: 'Kinah Rates',
       consign: 'Consign & Booster',
       support: 'Support (Zalo)',
-      login: 'Sign In',
     },
     hero: {
       eyebrow: 'GEGETEAM - FOX HOUSE',

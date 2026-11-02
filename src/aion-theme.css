@@ -1,0 +1,151 @@
+/* ---------- Giao diện Aion 2: bầu trời Elyos trên, Abyss tím dưới ---------- */
+:root { font-variant-numeric: tabular-nums; }
+
+.app-shell {
+  background:
+    radial-gradient(900px 560px at 50% -120px, rgba(255, 214, 140, 0.2), transparent 70%),
+    radial-gradient(760px 620px at 100% 520px, rgba(77, 170, 230, 0.13), transparent 72%),
+    linear-gradient(180deg, #0c1228 0, #0a0e22 34%, #0e0b24 70%, #150c2c 100%);
+}
+.ambient-one { background: #5a2fc0; opacity: 0.22; }
+.ambient-two { background: #d8a24a; opacity: 0.12; }
+.site-header, main, .site-footer { position: relative; z-index: 1; }
+.site-header { z-index: 20; }
+
+/* Lông vũ bay */
+.feather-field { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.feather-field i { position: absolute; top: -70px; width: 22px; height: 58px; background: url("./assets/feather.svg") center / contain no-repeat; opacity: 0; animation: feather-fall 26s linear infinite; will-change: transform; }
+.feather-field i:nth-child(1) { left: 6%; animation-delay: -3s; }
+.feather-field i:nth-child(2) { left: 18%; animation-delay: -15s; animation-duration: 31s; width: 15px; height: 40px; }
+.feather-field i:nth-child(3) { left: 34%; animation-delay: -9s; animation-duration: 34s; width: 13px; height: 34px; }
+.feather-field i:nth-child(4) { left: 52%; animation-delay: -21s; animation-duration: 29s; }
+.feather-field i:nth-child(5) { left: 68%; animation-delay: -6s; animation-duration: 36s; width: 15px; height: 40px; }
+.feather-field i:nth-child(6) { left: 83%; animation-delay: -18s; }
+.feather-field i:nth-child(7) { left: 94%; animation-delay: -12s; animation-duration: 32s; width: 13px; height: 34px; }
+.feather-field i:nth-child(even) { background-image: url("./assets/feather-violet.svg"); }
+@keyframes feather-fall {
+  0% { transform: translate3d(0, 0, 0) rotate(-18deg); opacity: 0; }
+  8% { opacity: 0.38; }
+  50% { transform: translate3d(46px, 55vh, 0) rotate(22deg); }
+  92% { opacity: 0.28; }
+  100% { transform: translate3d(-14px, 112vh, 0) rotate(-14deg); opacity: 0; }
+}
+
+/* Vòng phù văn */
+.hero-art-wrap { position: relative; }
+.hero-art { position: relative; z-index: 2; }
+.aether-ring { position: absolute; left: 50%; top: 50%; z-index: 1; width: 112%; max-width: 480px; aspect-ratio: 1; margin: 0; translate: -50% -50%; animation: aether-spin 90s linear infinite; pointer-events: none; will-change: rotate; }
+@keyframes aether-spin { to { rotate: 360deg; } }
+
+/* Tiêu đề: vàng Aether */
+h1 em, h2 em, .section-heading h2 em {
+  background: linear-gradient(180deg, #fff1c4 0%, #f7c868 52%, #d2913a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 10px rgba(247, 200, 104, 0.3));
+}
+h1 { text-shadow: 0 3px 22px rgba(4, 6, 20, 0.85); }
+.eyebrow, .eyebrow-orange { color: #f3c877 !important; }
+.eyebrow::before { content: ""; flex: none; width: 26px; height: 13px; background: url("./assets/wing-mark.svg") center / contain no-repeat; }
+
+h1 { line-height: 1.14 !important; letter-spacing: 0 !important; }
+h2 { letter-spacing: 0 !important; line-height: 1.2 !important; }
+
+/* Nhãn máy tính không dính nhau */
+@media (min-width: 861px) {
+  .calc-inputs-bar { grid-template-columns: 210px 158px 1fr auto; }
+}
+
+.bgsc-action-btn { white-space: nowrap; font-size: 12.5px !important; letter-spacing: 0 !important; padding-left: 6px !important; padding-right: 6px !important; }
+
+/* Số tiền sắc nét: bỏ quầng sáng làm nhoè nét chữ */
+.calc-screen-val, .rate-num-val, .server-price-orange, .server-price-orange * {
+  text-shadow: none !important;
+  filter: none !important;
+  letter-spacing: 0 !important;
+  -webkit-font-smoothing: auto;
+}
+.calc-screen-val { color: #5cf29a !important; font-size: 24px !important; font-weight: 700 !important; }
+.rate-num-val { color: #fff; font-weight: 700 !important; }
+
+/* Thanh menu: chỉ một vạch sáng, chạy bằng transform để mượt */
+.main-nav a.active::after { display: none !important; }
+.nav-gliding-glow-bar { left: 0 !important; width: 100px !important; opacity: 0; transform-origin: left center; will-change: transform; background: #f7c868 !important; box-shadow: 0 0 8px rgba(247, 200, 104, 0.8) !important; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease !important; }
+
+/* Quầng nền vẽ sẵn thay cho blur nặng, cuộn trang nhẹ hơn */
+.ambient { filter: none !important; }
+.ambient-one { background: radial-gradient(closest-side, #5a2fc0, transparent) !important; width: 760px !important; height: 760px !important; }
+.ambient-two { background: radial-gradient(closest-side, #d8a24a, transparent) !important; width: 640px !important; height: 640px !important; }
+
+/* Dải phân cách đôi cánh giữa các mục */
+.pricing-section, .unified-booster-section, .community-section { position: relative; }
+.pricing-section::before, .community-section::before {
+  content: "";
+  display: block;
+  height: 40px;
+  margin: -56px 0 44px;
+  background: url("./assets/wing-divider.svg") center / 240px 40px no-repeat, linear-gradient(90deg, transparent, rgba(255, 226, 160, 0.5) 22%, transparent 42%, transparent 58%, rgba(178, 123, 255, 0.5) 78%, transparent) center / 100% 1px no-repeat;
+}
+
+/* Khung Aether: viền vàng sang tím */
+.market-panel, .feature-strip, .unified-booster-section {
+  border: 1px solid transparent !important;
+  border-image: linear-gradient(120deg, rgba(255, 226, 160, 0.75), rgba(127, 227, 255, 0.35) 48%, rgba(178, 123, 255, 0.8)) 1 !important;
+  box-shadow: 0 18px 46px rgba(3, 4, 16, 0.55), 0 0 34px rgba(126, 86, 230, 0.1);
+}
+.market-panel { background: linear-gradient(180deg, rgba(20, 24, 52, 0.86), rgba(11, 13, 34, 0.92)) !important; }
+.feature-strip { background: linear-gradient(90deg, rgba(40, 32, 30, 0.5), rgba(15, 18, 44, 0.7) 50%, rgba(36, 22, 66, 0.55)) !important; }
+
+/* Nút chính */
+.primary-button {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ffe5a8;
+  background: linear-gradient(180deg, #ffe08e, #eeb04a 55%, #c9832a) !important;
+  color: #2a1704 !important;
+  box-shadow: 0 8px 24px rgba(238, 176, 74, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+}
+.primary-button::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent); transform: skewX(-18deg); transition: left 0.55s ease; pointer-events: none; }
+.primary-button:hover::after { left: 120%; }
+
+/* Thẻ cộng đồng */
+.comm-channel-card { border-color: rgba(178, 150, 255, 0.28) !important; background: linear-gradient(135deg, rgba(24, 26, 58, 0.82), rgba(14, 13, 38, 0.92)) !important; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+.comm-channel-card:hover { transform: translateY(-3px); border-color: rgba(255, 226, 160, 0.75) !important; box-shadow: 0 10px 28px rgba(3, 4, 16, 0.6), 0 0 20px rgba(247, 200, 104, 0.2); }
+
+/* Chân trang */
+.site-footer { border-top: 1px solid transparent; border-image: linear-gradient(90deg, transparent, rgba(255, 226, 160, 0.6) 25%, rgba(178, 123, 255, 0.6) 75%, transparent) 1; }
+
+@media (hover: none) {
+  input, select, textarea { font-size: 16px !important; }
+}
+@media (max-width: 350px) {
+  .ccc-main-content { flex-wrap: wrap; }
+  .ccc-content { flex: 1 1 60%; min-width: 0; }
+  .ccc-action-tag { flex-basis: 100%; text-align: right; white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primary-button::after { display: none; }
+  .feather-field, .aether-ring { animation: none; }
+  .feather-field { display: none; }
+}
+@media (max-width: 800px) {
+  .feather-field i:nth-child(n + 4) { display: none; }
+  .hero-art-wrap { height: 370px !important; margin-top: 34px !important; }
+  .aether-ring { width: 106%; max-width: 340px; }
+  .calc-title-box { flex-wrap: wrap; min-width: 0; }
+  .calc-top-sub { white-space: normal !important; min-width: 0; flex-basis: 100%; }
+  .booster-cat-tabs.compact-tabs { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; overflow: visible !important; }
+  .booster-cat-tabs.compact-tabs .bct-btn { width: 100%; min-height: 44px; white-space: normal; justify-content: center; text-align: center; }
+  .menu-toggle { width: 44px !important; height: 44px !important; place-items: center; }
+  .lang-toggle-btn { min-height: 40px; }
+  .main-nav a { min-height: 44px; display: flex; align-items: center; }
+  .nav-gliding-glow-bar { display: none; }
+  .ccp-pill, .calc-screen-convert-pill { min-height: 36px; }
+  input, select, textarea { font-size: 16px !important; }
+  .region-card { padding: 0 4px !important; }
+  .rc-title { font-size: 11.5px !important; letter-spacing: 0 !important; white-space: normal !important; line-height: 1.2; text-align: center; }
+  .lang-toggle-btn { white-space: nowrap; }
+}
