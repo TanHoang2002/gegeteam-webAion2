@@ -1751,6 +1751,7 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
 /* Unified Booster Section */
 .unified-booster-section {
   width: min(1200px, calc(100% - 32px)) !important;
+  min-height: 720px;
 }
 .compact-tabs {
   margin-bottom: 16px;
@@ -2529,6 +2530,7 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
   position: relative;
   overflow: hidden;
   border-radius: 12px;
+  background: #070d18 !important;
   border: 1.5px solid rgba(168, 85, 247, 0.4) !important;
   padding: 40px 32px !important;
   margin: 50px auto !important;
@@ -2538,18 +2540,21 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 35px rgba(168, 85, 247, 0.18) !important;
 }
 
+/* Background image cố định kích thước, tuyệt đối không bị phóng to thu nhỏ khi đổi tab Pet / Xã Nhựa / Leveling */
 .support-section::before {
   content: '';
   position: absolute;
-  top: -14px;
-  left: -14px;
-  right: -14px;
-  height: max(100% + 28px, 1050px);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 760px;
   background-image: url('/services-bg.jpg');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
   filter: blur(1.5px) brightness(0.68) saturate(1.15);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.95) 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.95) 60%, transparent 100%);
   z-index: 0;
   pointer-events: none;
   transform: translateZ(0);
@@ -2590,6 +2595,12 @@ h1, h2, h3 { font-family: 'DM Sans', sans-serif; text-transform: uppercase; lett
   .support-section {
     padding: 35px 20px !important;
     display: block !important;
+  }
+  .unified-booster-section {
+    min-height: auto !important;
+  }
+  .support-section::before {
+    height: 560px !important;
   }
 }
 
