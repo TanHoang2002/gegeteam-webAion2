@@ -16,9 +16,7 @@ import {
 } from 'lucide-react';
 import { Language, TRANSLATIONS } from './translations';
 import { BoosterSection, BoosterCategoryType } from './components/BoosterSection';
-import { AetherRing, FeatherField } from './components/AionDecor';
-
-const heroImage = '/hero-fox.webp';
+import { FeatherField } from './components/AionDecor';
 const USDT_RATE = 25800; // 1 USDT = 25,800 VNĐ
 
 interface ServerItem {
@@ -205,11 +203,11 @@ const REGIONS_DATA: Record<string, RegionData> = {
 };
 
 const REGION_ASSETS: Record<string, { earth: string; color: string }> = {
-  ASIA: { earth: '/earth-asia.svg', color: '#2bd8c0' },
-  EU: { earth: '/earth-europe.svg', color: '#38bdf8' },
-  'NA-WEST': { earth: '/earth-north-america.svg', color: '#ff9d4a' },
-  'NA-EAST': { earth: '/earth-na-east.svg', color: '#818cf8' },
-  SA: { earth: '/earth-south-america.svg', color: '#4ade80' },
+  ASIA: { earth: './earth-asia.svg', color: '#2bd8c0' },
+  EU: { earth: './earth-europe.svg', color: '#38bdf8' },
+  'NA-WEST': { earth: './earth-north-america.svg', color: '#ff9d4a' },
+  'NA-EAST': { earth: './earth-na-east.svg', color: '#818cf8' },
+  SA: { earth: './earth-south-america.svg', color: '#4ade80' },
 };
 
 const REGION_SHORT_LABEL: Record<string, string> = {
@@ -327,8 +325,8 @@ function App() {
       <div className="ambient ambient-two" />
       <FeatherField />
       <header className="site-header">
-        <a className="brand" href="#sec-landing" aria-label="Gege Team trang chủ">
-          <img src="/gegeteam-logo.webp" alt="GeGe Team Logo" className="brand-logo-img" />
+        <a className="brand" href="/" title="Về trang chủ GeGe Team" aria-label="Về trang chủ GeGe Team">
+          <img src="./gegeteam-logo.webp" alt="GeGe Team Logo" className="brand-logo-img" />
           <span className="brand-text-wrap">
             <strong>GEGE</strong>
             <small>TEAM</small>
@@ -419,7 +417,12 @@ function App() {
 
       <main id="sec-landing">
         <section className="hero-section">
+          {/* Ảnh chính thức AION 2 làm nền cả phần đầu trang */}
+          <div className="hero-backdrop" aria-hidden="true">
+            <img src="./hero-aion2.webp" alt="" />
+          </div>
           <div className="hero-copy">
+            <img className="hero-game-logo" src="./aion2-logo.webp" width="296" height="202" alt="AION 2" />
             <div className="eyebrow eyebrow-orange">{t.hero.eyebrow}</div>
             <h1>
               {t.hero.title1}
@@ -450,11 +453,6 @@ function App() {
                 <b>1.510+</b> {t.hero.trust}
               </span>
             </div>
-          </div>
-          <div className="hero-art-wrap">
-            <div className="hero-glow" />
-            <AetherRing />
-            <img className="hero-art" src={heroImage} width="420" height="420" alt="Chiến binh trong thế giới fantasy" />
           </div>
         </section>
 
@@ -711,7 +709,7 @@ function App() {
                       key={`${server.region}-${server.name}`}
                       onClick={() => onSelectServerForCalc(server.region, server.name, server.rate)}
                     >
-                      <img src="/kinah-coin.png" alt="Kinah" className="server-coin-icon" />
+                      <img src="./kinah-coin.png" alt="Kinah" className="server-coin-icon" />
                       <span className="server-name-orange">
                         <b>{server.name}</b>
                         {search.trim() !== '' && (
@@ -764,7 +762,7 @@ function App() {
                     className={`ccp-pill ${payoutCurrency === 'USDT' ? 'active' : ''}`}
                     onClick={() => setPayoutCurrency('USDT')}
                   >
-                    <img src="/usdt-icon.svg" alt="USDT" className="ccp-usdt-icon" />
+                    <img src="./usdt-icon.svg" alt="USDT" className="ccp-usdt-icon" />
                     ₮ USDT
                   </button>
                   <span className="ccp-rate-badge">{t.calculator.usdtRateHint}</span>
@@ -929,12 +927,12 @@ function App() {
               className="comm-channel-card comm-card-zalo"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/logo-zalo.svg" alt="Zalo" className="ccc-full-logo" />
+                <img src="./logo-zalo.svg" alt="Zalo" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap zalo-bg">
-                  <img src="/logo-zalo.svg" alt="Zalo" className="ccc-badge-logo" />
+                  <img src="./logo-zalo.svg" alt="Zalo" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.zaloGroup}</b>
@@ -952,12 +950,12 @@ function App() {
               className="comm-channel-card comm-card-fb"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/logo-facebook.svg" alt="Facebook" className="ccc-full-logo" />
+                <img src="./logo-facebook.svg" alt="Facebook" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap fb-bg">
-                  <img src="/logo-facebook.svg" alt="Facebook" className="ccc-badge-logo" />
+                  <img src="./logo-facebook.svg" alt="Facebook" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.fbPage}</b>
@@ -975,12 +973,12 @@ function App() {
               className="comm-channel-card comm-card-group"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/logo-facebook.svg" alt="Group Facebook" className="ccc-full-logo" />
+                <img src="./logo-facebook.svg" alt="Group Facebook" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap group-bg">
-                  <img src="/logo-facebook.svg" alt="Group" className="ccc-badge-logo" />
+                  <img src="./logo-facebook.svg" alt="Group" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.fbGroup}</b>
@@ -998,12 +996,12 @@ function App() {
               className="comm-channel-card comm-card-discord"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/logo-discord.svg" alt="Discord" className="ccc-full-logo" />
+                <img src="./logo-discord.svg" alt="Discord" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap discord-bg">
-                  <img src="/logo-discord.svg" alt="Discord" className="ccc-badge-logo" />
+                  <img src="./logo-discord.svg" alt="Discord" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.discord}</b>
@@ -1021,12 +1019,12 @@ function App() {
               className="comm-channel-card comm-card-admin"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/logo-zalo.svg" alt="Zalo Admin" className="ccc-full-logo" />
+                <img src="./logo-zalo.svg" alt="Zalo Admin" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap admin-bg">
-                  <img src="/logo-zalo.svg" alt="Zalo Admin" className="ccc-badge-logo" />
+                  <img src="./logo-zalo.svg" alt="Zalo Admin" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.adminZalo}</b>
@@ -1044,12 +1042,12 @@ function App() {
               className="comm-channel-card comm-card-portal"
             >
               <div className="ccc-hover-backdrop">
-                <img src="/gegeteam-logo.webp" alt="GeGe Team" className="ccc-full-logo ccc-full-logo-gege" />
+                <img src="./gegeteam-logo.webp" alt="GeGe Team" className="ccc-full-logo ccc-full-logo-gege" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
                 <div className="ccc-icon-wrap bio-bg">
-                  <img src="/gegeteam-logo.webp" alt="GeGe Portal" className="ccc-badge-logo" />
+                  <img src="./gegeteam-logo.webp" alt="GeGe Portal" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
                   <b>{t.community.portal}</b>
