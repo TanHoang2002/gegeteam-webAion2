@@ -17,6 +17,8 @@ import {
 import { Language, TRANSLATIONS } from './translations';
 import { BoosterSection, BoosterCategoryType } from './components/BoosterSection';
 import { FeatherField } from './components/AionDecor';
+import { AskFloat } from './components/AskFloat';
+import { KinahGuide, KinahPrefill, KinahRegion } from './components/KinahGuide';
 const USDT_RATE = 25800; // 1 USDT = 25,800 VNĐ
 
 interface ServerItem {
@@ -290,6 +292,19 @@ function App() {
     return { region, server, rate };
   }, [calcServerKey]);
 
+  const [kinahPrefill, setKinahPrefill] = useState<KinahPrefill>({ key: '', amount: 0, currency: 'VND', n: 0 });
+  const kinahRegions = useMemo<KinahRegion[]>(
+    () =>
+      Object.values(REGIONS_DATA).map((reg) => ({
+        code: reg.code,
+        label: `${reg.name} (${REGION_SHORT_LABEL[reg.code] || reg.code})`,
+        servers: [...reg.row1, ...reg.row2]
+          .filter((x) => x.rate !== null)
+          .map((x) => ({ server: x.server, rate: x.rate as number })),
+      })),
+    [],
+  );
+
   const numericCalcAmount = typeof calcAmount === 'number' ? calcAmount : (parseFloat(calcAmount) || 0);
   const calcTotalVND = Math.round(numericCalcAmount * selectedCalcServer.rate * 1000);
   const calcTotalUSDT = (calcTotalVND / USDT_RATE).toFixed(2);
@@ -380,7 +395,7 @@ function App() {
           <a
             data-nav="support"
             className={activeNav === 'support' ? 'active' : ''}
-            href="https://zalo.me/0936854505"
+            href="https://discord.gg/t2fPyUPGY"
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={handleNavHover}
@@ -442,55 +457,9 @@ function App() {
                 {t.hero.cta} <ArrowRight size={17} />
               </a>
             </div>
-            <div className="hero-trust">
-              <div className="trust-avatars">
-                <span>G</span>
-                <span>A</span>
-                <span>K</span>
-                <span>+</span>
-              </div>
-              <span>
-                <b>1.510+</b> {t.hero.trust}
-              </span>
-            </div>
           </div>
         </section>
 
-        <section className="feature-strip">
-          <div>
-            <span className="feature-icon orange">
-              <ShieldCheck size={19} />
-            </span>
-            <span>
-              <b>{t.features.safeTrade}</b>
-              <small>{t.features.safeTradeSub}</small>
-            </span>
-          </div>
-          <div>
-            <span className="feature-icon blue">
-              <Zap size={19} />
-            </span>
-            <span>
-              <b>{t.features.booster}</b>
-              <small>{t.features.boosterSub}</small>
-            </span>
-          </div>
-          <div>
-            <span className="feature-icon green">
-              <Headphones size={19} />
-            </span>
-            <span>
-              <b>{t.features.support}</b>
-              <small>{t.features.supportSub}</small>
-            </span>
-          </div>
-          <div className="feature-stat">
-            <b>
-              4.9<span>/5</span>
-            </b>
-            <small>{t.features.ratingSub}</small>
-          </div>
-        </section>
 
         <section className="pricing-section" id="pricing">
           <div className="section-heading">
@@ -857,14 +826,16 @@ function App() {
 
                 <div className="calc-cta-wrap">
                   <a
-                    href={`https://zalo.me/0936854505?text=${encodeURIComponent(
-                      payoutCurrency === 'USDT'
-                        ? `Chào Admin GeGe Team, mình muốn ký gửi ${calcAmount || 0}M Kina tại server ${selectedCalcServer.server} (${selectedCalcServer.region}), nhận thanh toán qua VÍ TIỀN SỐ USDT: ${calcTotalUSDT} USDT (Tương đương ${calcTotalVND.toLocaleString('vi-VN')} VNĐ). Nhờ Admin hỗ trợ!`
-                        : `Chào Admin GeGe Team, mình muốn ký gửi ${calcAmount || 0}M Kina tại server ${selectedCalcServer.server} (${selectedCalcServer.region}), số tiền ước tính ${calcTotalVND.toLocaleString('vi-VN')} VNĐ (hoặc ${calcTotalUSDT} USDT). Nhờ Admin hỗ trợ!`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#kinah-guide"
                     className="calc-sell-btn"
+                    onClick={() =>
+                      setKinahPrefill((p) => ({
+                        key: calcServerKey,
+                        amount: numericCalcAmount,
+                        currency: payoutCurrency,
+                        n: p.n + 1,
+                      }))
+                    }
                   >
                     <span>{t.calculator.sellNow}</span>
                     <ArrowRight size={15} />
@@ -877,7 +848,7 @@ function App() {
               <span>
                 <Clock3 size={15} /> {t.pricing.footerNote}
               </span>
-              <a href="#support">
+              <a href="#kinah-guide">
                 {t.pricing.footerLink} <ArrowRight size={14} />
               </a>
             </div>
@@ -885,20 +856,12 @@ function App() {
         </section>
 
         <section className="support-section unified-booster-section" id="boost">
-          <div className="section-heading" style={{ marginBottom: '16px', width: '100%' }}>
-            <div>
-              <div className="eyebrow eyebrow-orange">DỊCH VỤ GEGETEAM - NHÀ CÁO</div>
-              <h2>
-                BẢNG GIÁ DỊCH VỤ <em>& CÀY THUÊ AION 2</em>
-              </h2>
-              <p>Phó bản Xã Nhựa • Cày Pet & Nhiệm Vụ • Leveling 1-45 • Chăm sóc nhân vật theo yêu cầu</p>
-            </div>
-          </div>
 
-          <BoosterSection
-            boosterCategory={boosterCategory}
-            setBoosterCategory={setBoosterCategory}
-          />
+          <BoosterSection lang={lang} />
+        </section>
+
+        <section className="support-section unified-booster-section kinah-guide-section" id="kinah-guide">
+          <KinahGuide lang={lang} regions={kinahRegions} prefill={kinahPrefill} />
         </section>
 
         <section className="community-section" id="support">
@@ -919,29 +882,29 @@ function App() {
           </div>
 
           <div className="community-grid">
-            {/* 1. Nhóm Zalo */}
+
+            {/* 1. Discord (kênh chính) */}
             <a
-              href="https://zalo.me/g/kmxfzujpa7akgrijn5hk"
+              href="https://discord.gg/t2fPyUPGY"
               target="_blank"
               rel="noopener noreferrer"
-              className="comm-channel-card comm-card-zalo"
+              className="comm-channel-card comm-card-discord"
             >
               <div className="ccc-hover-backdrop">
-                <img src="./logo-zalo.svg" alt="Zalo" className="ccc-full-logo" />
+                <img src="./logo-discord.svg" alt="Discord" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
-                <div className="ccc-icon-wrap zalo-bg">
-                  <img src="./logo-zalo.svg" alt="Zalo" className="ccc-badge-logo" />
+                <div className="ccc-icon-wrap discord-bg">
+                  <img src="./logo-discord.svg" alt="Discord" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
-                  <b>{t.community.zaloGroup}</b>
-                  <small>{t.community.zaloGroupSub}</small>
+                  <b>{t.community.discord}</b>
+                  <small>{t.community.discordSub}</small>
                 </div>
-                <span className="ccc-action-tag">{t.community.joinNow}</span>
+                <span className="ccc-action-tag">{t.community.connect}</span>
               </div>
             </a>
-
             {/* 2. Fanpage Facebook */}
             <a
               href="https://www.facebook.com/GegeTeam.net/"
@@ -988,51 +951,29 @@ function App() {
               </div>
             </a>
 
-            {/* 4. Discord */}
+            {/* Nhóm Zalo (phụ) */}
             <a
-              href="https://discord.gg/gege-team"
+              href="https://zalo.me/g/kmxfzujpa7akgrijn5hk"
               target="_blank"
               rel="noopener noreferrer"
-              className="comm-channel-card comm-card-discord"
+              className="comm-channel-card comm-card-zalo"
             >
               <div className="ccc-hover-backdrop">
-                <img src="./logo-discord.svg" alt="Discord" className="ccc-full-logo" />
+                <img src="./logo-zalo.svg" alt="Zalo" className="ccc-full-logo" />
                 <div className="ccc-backdrop-overlay" />
               </div>
               <div className="ccc-main-content">
-                <div className="ccc-icon-wrap discord-bg">
-                  <img src="./logo-discord.svg" alt="Discord" className="ccc-badge-logo" />
+                <div className="ccc-icon-wrap zalo-bg">
+                  <img src="./logo-zalo.svg" alt="Zalo" className="ccc-badge-logo" />
                 </div>
                 <div className="ccc-content">
-                  <b>{t.community.discord}</b>
-                  <small>{t.community.discordSub}</small>
+                  <b>{t.community.zaloGroup}</b>
+                  <small>{t.community.zaloGroupSub}</small>
                 </div>
-                <span className="ccc-action-tag">{t.community.connect}</span>
+                <span className="ccc-action-tag">{t.community.joinNow}</span>
               </div>
             </a>
 
-            {/* 5. Zalo Admin */}
-            <a
-              href="https://zalo.me/0936854505"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="comm-channel-card comm-card-admin"
-            >
-              <div className="ccc-hover-backdrop">
-                <img src="./logo-zalo.svg" alt="Zalo Admin" className="ccc-full-logo" />
-                <div className="ccc-backdrop-overlay" />
-              </div>
-              <div className="ccc-main-content">
-                <div className="ccc-icon-wrap admin-bg">
-                  <img src="./logo-zalo.svg" alt="Zalo Admin" className="ccc-badge-logo" />
-                </div>
-                <div className="ccc-content">
-                  <b>{t.community.adminZalo}</b>
-                  <small>{t.community.adminZaloSub}</small>
-                </div>
-                <span className="ccc-action-tag">{t.community.msgNow}</span>
-              </div>
-            </a>
 
             {/* 6. Cổng Tổng Hợp gegeteam.xyz */}
             <a
@@ -1078,15 +1019,14 @@ function App() {
                 </button>
               </div>
 
-              <BoosterSection
-                boosterCategory={boosterCategory}
-                setBoosterCategory={setBoosterCategory}
-              />
+              <BoosterSection lang={lang} />
             </div>
           </div>
         )}
 
       </main>
+
+      <AskFloat lang={lang} />
 
       <footer className="site-footer">
         <span>{t.footer.rights}</span>

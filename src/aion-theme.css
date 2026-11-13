@@ -185,3 +185,21 @@ h2 { letter-spacing: 0 !important; line-height: 1.2 !important; }
 @media (min-width: 1700px) { html { zoom: 1.25; --z: 1.25; } }
 @media (min-width: 2000px) { html { zoom: 1.4; --z: 1.4; } }
 @media (min-width: 2400px) { html { zoom: 1.55; --z: 1.55; } }
+
+/* ---------- Căn chỉnh điện thoại / máy tính bảng ---------- */
+section[id] { scroll-margin-top: 14px; }
+@media (max-width: 800px) {
+  .unified-booster-section, .community-section { width: min(100% - 32px, 620px) !important; }
+  .community-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 560px) {
+  .support-section { padding: 26px 12px !important; margin: 36px auto !important; }
+  .ccc-main-content { flex-wrap: wrap; gap: 12px; padding: 14px 16px; }
+  .ccc-content { flex: 1 1 0; min-width: 0; }
+  .ccc-action-tag { flex-basis: 100%; justify-content: flex-end; }
+  .site-footer { padding-bottom: 90px; }
+}
+/* overflow: clip vẫn cắt nền như hidden nhưng cho phép cột danh mục / khung tóm tắt dính khi cuộn */
+.support-section.unified-booster-section { overflow: clip !important; }
+/* clip thay cho hidden: vẫn chặn tràn ngang nhưng không làm hỏng position: sticky bên trong */
+.app-shell { overflow: clip !important; }
