@@ -340,7 +340,7 @@ function App() {
       <div className="ambient ambient-two" />
       <FeatherField />
       <header className="site-header">
-        <a className="brand" href="/" title="Về trang chủ GeGe Team" aria-label="Về trang chủ GeGe Team">
+        <a className="brand" href="../../" title="Về trang chủ GeGe Team" aria-label="Về trang chủ GeGe Team">
           <img src="./gegeteam-logo.webp" alt="GeGe Team Logo" className="brand-logo-img" />
           <span className="brand-text-wrap">
             <strong>GEGE</strong>
